@@ -1,10 +1,7 @@
-import org.apache.commons.lang.StringUtils;
 import resources.ResourceReader;
 
 import java.util.Locale;
 import java.util.Scanner;
-
-import static org.apache.commons.lang.StringUtils.lowerCase;
 
 public class WriteLifeApplication {
 
