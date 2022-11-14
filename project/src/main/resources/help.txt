@@ -5,8 +5,24 @@ q -> quit the game
 help -> to show this help text
 help <topic> -> to show info about a topic
 
+QUICK REFERENCES
+----------------
+1. list (shows the list of possible commands)
+
 BEGINNER TOPICS
 ----------------
+1. write-life
+2. world
+3. player
+4. login
+5. look
+6. move
+7. take
+8. drop
+9. wear
+
+INTERMEDIATE TOPICS
+--------------------
 
 LIST OF POSSIBLE TOPICS
 ------------------------

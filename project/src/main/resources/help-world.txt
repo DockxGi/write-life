@@ -1,0 +1,18 @@
+==============
+HELP -> WORLD
+==============
+A world is a set of "rooms" with which the player characters can interact.
+A room can be many things: a forest, the beach, a kitchen, cave, graveyard, ... .
+It is just a place where the player can be.
+
+The world itself has some high level properties of its own. It has its own time.
+Without a clock players can not know the exact hour of the day. But they can see if it is day or night.
+The world can have a specific theme. It is up to the creator of the world what that theme is.
+
+CREATING A WORLD
+-----------------
+world new
+
+SHOWING THE LIST OF WORLDS
+---------------------------
+world list

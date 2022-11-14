@@ -1,5 +1,5 @@
-import resources.CommandProcessor;
 import resources.ResourceReader;
+import world.World;
 
 import java.util.Locale;
 import java.util.Scanner;

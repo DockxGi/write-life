@@ -1,0 +1,17 @@
+===================
+HELP -> WRITE LIFE
+===================
+Write life is a text-based sandbox game.
+Think of it as a text-only version of Second Life, but then single player,
+does only run/save un your pc and the virtual objects do not cost any real money.
+
+To start you first have to create your virtual world.
+The second step is to create your player character.
+The third step is to enter your world with the player character.
+
+Once you enter the world with your player character you can interact with it: create new areas,
+create new objects, add enemies, puzzles, magic, change the weather and so on.
+
+The goal is to use enjoy your own fantastic imaginary world.
+
+related topics: world, player, login
