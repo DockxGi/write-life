@@ -1,3 +1,4 @@
+import resources.CommandProcessor;
 import resources.ResourceReader;
 
 import java.util.Locale;
@@ -8,6 +9,7 @@ public class WriteLifeApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ResourceReader resourceReader = new ResourceReader();
+        CommandProcessor commandProcessor = new CommandProcessor(resourceReader);
         boolean goOn = true;
 
         System.out.println(resourceReader.readTextFile("startup-screen.txt"));
@@ -18,12 +20,10 @@ public class WriteLifeApplication {
 
             goOn = !"q".equals(nextLine);
             if (goOn){
-                processCommand(nextLine);
+                commandProcessor.processCommand(nextLine);
             }
         }
     }
 
-    private static void processCommand(String nextLine) {
 
-    }
 }

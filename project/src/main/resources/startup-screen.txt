@@ -2,3 +2,4 @@
 WRITE LIFE v1.0.0
 ==================
 q -> to quit the game
+help -> for general help
