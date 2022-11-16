@@ -1,4 +1,4 @@
-package world;
+package world.domain;
 
 public class World {
     private String name;

@@ -1,4 +1,6 @@
-package world;
+package world.view;
+
+import world.domain.World;
 
 /**
  * Facade for showing a menu of the world-command.

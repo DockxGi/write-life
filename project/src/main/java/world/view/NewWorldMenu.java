@@ -1,8 +1,8 @@
-package world;
+package world.view;
 
 import org.apache.commons.lang3.StringUtils;
+import world.domain.World;
 import world.persist.WorldJsonFileRepository;
-import world.persist.WorldRepository;
 
 import java.util.Scanner;
 

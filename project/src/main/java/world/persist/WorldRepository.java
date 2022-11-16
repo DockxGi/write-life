@@ -1,6 +1,6 @@
 package world.persist;
 
-import world.World;
+import world.domain.World;
 
 public interface WorldRepository {
 

@@ -2,7 +2,7 @@ package world.persist;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
-import world.World;
+import world.domain.World;
 
 import java.io.File;
 import java.io.IOException;

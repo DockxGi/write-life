@@ -1,7 +1,7 @@
 import org.apache.commons.lang3.StringUtils;
 import resources.ResourceReader;
-import world.World;
-import world.WorldMenus;
+import world.domain.World;
+import world.view.WorldMenus;
 import world.persist.WorldJsonFileRepository;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
