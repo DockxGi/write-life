@@ -2,6 +2,7 @@ import org.apache.commons.lang3.StringUtils;
 import resources.ResourceReader;
 import world.World;
 import world.WorldMenus;
+import world.persist.WorldJsonFileRepository;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -31,13 +32,19 @@ public class CommandProcessor {
     private void processWorldCommand(String[] splitted) {
         boolean noArgument = hasArgument(splitted);
         if (noArgument){
-            System.out.println("The command " + splitted[0] + "needs an argument. For more info type: help world");
+            System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help world");
             return;
         }
         String argument = splitted[1];
         if (argument.equals("new")){
             World world = worldMenus.showNewWorldMenu();
+            WorldJsonFileRepository.getInstance().save(world);
+            showWorldSaved();
         }
+    }
+
+    private void showWorldSaved(){
+        System.out.println("[WORLD SAVED]");
     }
 
     private void showHelp(String[] splitted) {

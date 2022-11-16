@@ -1,5 +1,4 @@
 import resources.ResourceReader;
-import world.World;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -20,10 +19,17 @@ public class WriteLifeApplication {
 
             goOn = !"q".equals(nextLine);
             if (goOn){
-                commandProcessor.processCommand(nextLine);
+                tryToProcessCommand(commandProcessor, nextLine);
             }
         }
     }
 
+    private static void tryToProcessCommand(CommandProcessor commandProcessor, String nextLine) {
+        try {
+            commandProcessor.processCommand(nextLine);
+        } catch (Exception e){
+            System.out.println("Failed to execute command: " + e.getMessage());
+        }
+    }
 
 }

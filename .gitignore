@@ -2,6 +2,12 @@
 *.iml
 .idea/
 
+# Target folder
+project/target/
+
+# Save files
+saved/
+
 # Compiled class file
 *.class
 
