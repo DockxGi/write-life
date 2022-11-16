@@ -1,37 +1,28 @@
-import org.apache.commons.lang3.StringUtils;
-import resources.ResourceReader;
+package command;
+
 import world.domain.World;
-import world.view.WorldMenus;
 import world.persist.WorldJsonFileRepository;
+import world.view.WorldMenus;
 
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public class CommandProcessor {
+public class WorldCommand extends ArgumentCommand {
 
-    private ResourceReader resourceReader;
     private WorldMenus worldMenus;
 
-    public CommandProcessor(ResourceReader resourceReader) {
-        this.resourceReader = resourceReader;
-        this.worldMenus = new WorldMenus();
+    public WorldCommand() {
+        worldMenus = new WorldMenus();
     }
 
-    public void processCommand(String nextLine) {
-        String[] splitted = nextLine.split(" ");
-
-        if (StringUtils.equals(splitted[0], "help")){
-            showHelp(splitted);
-            return;
-        }
-
-        if (StringUtils.equals(splitted[0], "world")){
-            processWorldCommand(splitted);
-        }
+    @Override
+    public String keyword() {
+        return "world";
     }
 
-    private void processWorldCommand(String[] splitted) {
+    @Override
+    public void execute(String[] splitted) {
         boolean noArgument = hasArgument(splitted);
         if (noArgument){
             System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help world");
@@ -64,19 +55,5 @@ public class CommandProcessor {
 
     private void showWorldSaved(){
         System.out.println("[WORLD SAVED]");
-    }
-
-    private void showHelp(String[] splitted) {
-        boolean noArgument = hasArgument(splitted);
-        if (noArgument){
-            System.out.println(resourceReader.readTextFile("help.txt"));
-            return;
-        }
-        String output = resourceReader.readTextFile("help-" + splitted[1] + ".txt");
-        System.out.println(output);
-    }
-
-    private boolean hasArgument(String[] splitted){
-        return splitted.length < 2 || isBlank(splitted[1]);
     }
 }
