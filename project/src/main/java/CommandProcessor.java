@@ -4,6 +4,8 @@ import world.domain.World;
 import world.view.WorldMenus;
 import world.persist.WorldJsonFileRepository;
 
+import java.util.List;
+
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class CommandProcessor {
@@ -37,10 +39,27 @@ public class CommandProcessor {
         }
         String argument = splitted[1];
         if (argument.equals("new")){
-            World world = worldMenus.showNewWorldMenu();
-            WorldJsonFileRepository.getInstance().save(world);
-            showWorldSaved();
+            processNewWorldCommand();
         }
+        if (argument.equals("list")){
+            processListWorldCommand();
+        }
+    }
+
+    private void processListWorldCommand() {
+        List<String> worldNames = WorldJsonFileRepository.getInstance().getAllWorldNames();
+
+        int nr = 1;
+        for (String worldName : worldNames) {
+            System.out.println(String.format("%d. %s",nr, worldName));
+            nr++;
+        }
+    }
+
+    private void processNewWorldCommand() {
+        World world = worldMenus.showNewWorldMenu();
+        WorldJsonFileRepository.getInstance().save(world);
+        showWorldSaved();
     }
 
     private void showWorldSaved(){
