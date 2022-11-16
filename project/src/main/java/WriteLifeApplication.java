@@ -9,7 +9,7 @@ public class WriteLifeApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ResourceReader resourceReader = new ResourceReader();
-        CommandProcessor commandProcessor = new CommandProcessor(resourceReader);
+        CommandProcessor commandProcessor = new CommandProcessor();
         boolean goOn = true;
 
         System.out.println(resourceReader.readTextFile("startup-screen.txt"));
