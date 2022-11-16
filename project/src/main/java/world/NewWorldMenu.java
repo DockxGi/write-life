@@ -23,17 +23,22 @@ public class NewWorldMenu {
         System.out.println("Wat is the name of the new world?");
         System.out.print("\n> ");
 
-        boolean askAgain = false;
+        boolean notValidName;
 
         String name;
         do {
             name = scanner.nextLine().trim();
-            askAgain = StringUtils.isBlank(name) || name.length() > 20;
-            if (askAgain){
+            notValidName = StringUtils.isBlank(name) || name.length() > 20;
+            if (notValidName){
                 System.out.println("Name not valid! Please enter a valid name. Max length is 20 characters.");
                 System.out.print("\n> ");
             }
-        } while (askAgain);
+            if (WorldJsonFileRepository.getInstance().exists(name)){
+                System.out.println("There already exists a world with this name. Please choose another one.");
+                System.out.print("\n> ");
+                notValidName = true;
+            }
+        } while (notValidName);
 
         return name;
     }
