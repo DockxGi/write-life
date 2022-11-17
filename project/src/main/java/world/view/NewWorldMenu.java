@@ -1,8 +1,11 @@
 package world.view;
 
-import org.apache.commons.lang3.StringUtils;
+import questions.Answer;
+import questions.AnswerRequirements;
+import questions.Interviewer;
 import world.domain.World;
 import world.persist.WorldJsonFileRepository;
+import world.persist.WorldRepository;
 
 import java.util.Scanner;
 
@@ -20,26 +23,17 @@ public class NewWorldMenu {
     }
 
     private String askWorldName() {
-        System.out.println("Wat is the name of the new world?");
-        System.out.print("\n> ");
+        Interviewer interviewer = new Interviewer();
 
-        boolean notValidName;
+        AnswerRequirements requirements = new AnswerRequirements(true, 1, 20);
+        Answer answer = interviewer.askQuestion("Wat is the name of the new world?", requirements);
 
-        String name;
-        do {
-            name = scanner.nextLine().trim();
-            notValidName = StringUtils.isBlank(name) || name.length() > 20;
-            if (notValidName){
-                System.out.println("Name not valid! Please enter a valid name. Max length is 20 characters.");
-                System.out.print("\n> ");
-            }
-            if (WorldJsonFileRepository.getInstance().exists(name)){
-                System.out.println("There already exists a world with this name. Please choose another one.");
-                System.out.print("\n> ");
-                notValidName = true;
-            }
-        } while (notValidName);
+        WorldRepository worldRepository = WorldJsonFileRepository.getInstance();
+        while (worldRepository.exists(answer.getText())){
+            System.out.println("There already exists a world with this name.");
+            answer = interviewer.askQuestion("Please give a new answer.", requirements);
+        }
 
-        return name;
+        return answer.getText();
     }
 }
