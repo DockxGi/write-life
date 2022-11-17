@@ -1,10 +1,13 @@
 package command;
 
+import utils.PrintLineUtil;
 import world.domain.World;
 import world.persist.WorldJsonFileRepository;
 import world.view.WorldMenus;
 
 import java.util.List;
+
+import static utils.PrintLineUtil.printAsOrderedList;
 
 public class WorldCommand extends ArgumentCommand {
 
@@ -37,12 +40,7 @@ public class WorldCommand extends ArgumentCommand {
 
     private void processListWorldCommand() {
         List<String> worldNames = WorldJsonFileRepository.getInstance().getAllWorldNames();
-
-        int nr = 1;
-        for (String worldName : worldNames) {
-            System.out.println(String.format("%d. %s",nr, worldName));
-            nr++;
-        }
+        printAsOrderedList(worldNames);
     }
 
     private void processNewWorldCommand() {

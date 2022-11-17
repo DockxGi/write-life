@@ -7,14 +7,10 @@ import world.domain.World;
 import world.persist.WorldJsonFileRepository;
 import world.persist.WorldRepository;
 
-import java.util.Scanner;
-
 /**
  * Interacts with user to create a world.
  */
 public class NewWorldMenu {
-
-    private Scanner scanner = new Scanner(System.in);
 
     public World interactWithUser() {
         String worldName = askWorldName();

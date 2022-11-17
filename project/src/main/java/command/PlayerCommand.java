@@ -3,6 +3,11 @@ package command;
 import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
 import player.view.PlayerMenus;
+import utils.PrintLineUtil;
+
+import java.util.List;
+
+import static utils.PrintLineUtil.printAsOrderedList;
 
 public class PlayerCommand extends ArgumentCommand {
 
@@ -28,6 +33,14 @@ public class PlayerCommand extends ArgumentCommand {
         if (argument.equals("new")){
             processNewPlayerCommand();
         }
+        if (argument.equals("list")){
+            processListPlayersCommand();
+        }
+    }
+
+    private void processListPlayersCommand() {
+        List<String> playerNames = PlayerJsonFileRepository.getInstance().getAllPlayerNames();
+        printAsOrderedList(playerNames);
     }
 
     private void processNewPlayerCommand() {

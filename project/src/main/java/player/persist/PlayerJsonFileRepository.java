@@ -9,7 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Collections.emptyList;
+import static java.util.Objects.requireNonNull;
 
 public class PlayerJsonFileRepository implements PlayerRepository {
 
@@ -47,7 +53,13 @@ public class PlayerJsonFileRepository implements PlayerRepository {
 
     @Override
     public List<String> getAllPlayerNames() {
-        return null;
+        File file = new File(PLAYERS_FOLDER);
+        if (!file.exists() || !file.isDirectory()){
+            return emptyList();
+        }
+        return Arrays.stream(requireNonNull(file.list()))
+                .map(s -> s.replace(".json", ""))
+                .collect(Collectors.toList());
     }
 
     private void createPlayersDirectory(File playersFile) {
