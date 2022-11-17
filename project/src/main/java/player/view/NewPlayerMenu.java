@@ -1,11 +1,11 @@
 package player.view;
 
-import org.apache.commons.lang3.StringUtils;
 import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
-import world.persist.WorldJsonFileRepository;
-
-import java.util.Scanner;
+import player.persist.PlayerRepository;
+import questions.Answer;
+import questions.AnswerRequirements;
+import questions.Interviewer;
 
 public class NewPlayerMenu {
 
@@ -16,28 +16,17 @@ public class NewPlayerMenu {
     }
 
     private String askPlayerName() {
-        Scanner scanner = new Scanner(System.in);
+        Interviewer interviewer = new Interviewer();
 
-        System.out.println("What is your firstname?");
-        System.out.print("\n> ");
+        AnswerRequirements requirements = new AnswerRequirements(true, 2, 20);
+        Answer answer = interviewer.askQuestion("What is your firstname?", requirements);
 
-        boolean notValidName;
+        PlayerRepository playerRepository = PlayerJsonFileRepository.getInstance();
+        while (playerRepository.exists(answer.getText())){
+            System.out.println("There already exists a player with this name.");
+            answer = interviewer.askQuestion("Please give a new answer.", requirements);
+        }
 
-        String name;
-        do {
-            name = scanner.nextLine().trim();
-            notValidName = StringUtils.isBlank(name) || name.length() > 20;
-            if (notValidName){
-                System.out.println("Name not valid! Please enter a valid name. Max length is 20 characters.");
-                System.out.print("\n> ");
-            }
-            if (PlayerJsonFileRepository.getInstance().exists(name)){
-                System.out.println("There already exists a player with this name. Please choose another one.");
-                System.out.print("\n> ");
-                notValidName = true;
-            }
-        } while (notValidName);
-
-        return name;
+        return answer.getText();
     }
 }
