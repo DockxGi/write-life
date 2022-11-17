@@ -12,6 +12,7 @@ public class CommandProcessor {
 
         supportCommand(new HelpCommand());
         supportCommand(new WorldCommand());
+        supportCommand(new PlayerCommand());
     }
 
     private void supportCommand(Command command){

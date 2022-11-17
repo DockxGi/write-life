@@ -6,11 +6,9 @@ import world.view.WorldMenus;
 
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
-
 public class WorldCommand extends ArgumentCommand {
 
-    private WorldMenus worldMenus;
+    private final WorldMenus worldMenus;
 
     public WorldCommand() {
         worldMenus = new WorldMenus();

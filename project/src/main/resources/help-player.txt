@@ -1,0 +1,13 @@
+==============
+HELP -> PLAYER
+==============
+A player is a character that is played by you.
+You need a player to be able to enter a world and to be able to interact with it.
+
+CREATING A PLAYER
+------------------
+player new
+
+SHOWING THE LIST OF PLAYERS
+----------------------------
+player list
