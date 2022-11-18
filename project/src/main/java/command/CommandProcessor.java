@@ -1,18 +1,23 @@
 package command;
 
+import game.GameModel;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class CommandProcessor {
 
     private Map<String, Command> commands;
+    private GameModel gameModel;
 
     public CommandProcessor() {
         this.commands = new HashMap<>();
+        gameModel = new GameModel();
 
         supportCommand(new HelpCommand());
         supportCommand(new WorldCommand());
         supportCommand(new PlayerCommand());
+
     }
 
     private void supportCommand(Command command){
@@ -26,7 +31,7 @@ public class CommandProcessor {
         Command command = commands.get(commandKeyword);
 
         if (command != null){
-            command.execute(splitted);
+            command.execute(splitted, gameModel);
         }
     }
 }

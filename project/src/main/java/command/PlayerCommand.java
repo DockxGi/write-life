@@ -1,5 +1,6 @@
 package command;
 
+import game.GameModel;
 import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
 import player.view.PlayerMenus;
@@ -23,7 +24,7 @@ public class PlayerCommand extends ArgumentCommand {
     }
 
     @Override
-    public void execute(String[] splitted) {
+    public void execute(String[] splitted, GameModel gameModel) {
         boolean noArgument = hasArgument(splitted);
         if (noArgument){
             System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help player");

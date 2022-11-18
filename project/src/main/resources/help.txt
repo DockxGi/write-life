@@ -14,12 +14,11 @@ BEGINNER TOPICS
 1. write-life
 2. world
 3. player
-4. login
-5. look
-6. move
-7. take
-8. drop
-9. wear
+4. look
+5. move
+6. take
+7. drop
+8. wear
 
 INTERMEDIATE TOPICS
 --------------------

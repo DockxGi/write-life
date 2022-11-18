@@ -2,11 +2,13 @@ package player.persist;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import player.domain.Player;
 import world.persist.FailedToSaveWorld;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -34,6 +36,20 @@ public class PlayerJsonFileRepository implements PlayerRepository {
     public boolean exists(String firstName) {
         File file = new File(PLAYERS_FOLDER + "/" + firstName + ".json");
         return file.exists();
+    }
+
+    @Override
+    public Player findByFirstName(String firstName) {
+        File file = new File(PLAYERS_FOLDER + "/" + firstName + ".json");
+        if (! file.exists()){
+            return null;
+        }
+        try {
+            String json = FileUtils.readFileToString(file, Charset.defaultCharset());
+            return new Gson().fromJson(json, Player.class);
+        } catch (Exception e) {
+            throw new FailedToReadPlayerFile("Failed to read: " + file.getAbsolutePath(), e);
+        }
     }
 
     @Override

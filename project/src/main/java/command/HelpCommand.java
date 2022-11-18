@@ -1,5 +1,6 @@
 package command;
 
+import game.GameModel;
 import resources.ResourceReader;
 
 public class HelpCommand extends ArgumentCommand{
@@ -16,7 +17,7 @@ public class HelpCommand extends ArgumentCommand{
     }
 
     @Override
-    public void execute(String[] splitted) {
+    public void execute(String[] splitted, GameModel gameModel) {
         boolean noArgument = hasArgument(splitted);
         if (noArgument){
             System.out.println(resourceReader.readTextFile("help.txt"));

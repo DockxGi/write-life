@@ -11,4 +11,6 @@ public interface PlayerRepository {
     void save(Player player);
 
     List<String> getAllPlayerNames();
+
+    Player findByFirstName(String text);
 }

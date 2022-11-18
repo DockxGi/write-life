@@ -12,4 +12,5 @@ public interface WorldRepository {
 
     List<String> getAllWorldNames();
 
+    World findByName(String name);
 }

@@ -16,3 +16,7 @@ world new
 SHOWING THE LIST OF WORLDS
 ---------------------------
 world list
+
+ENTERING A WORLD
+-----------------
+world enter

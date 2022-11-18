@@ -6,6 +6,7 @@ import world.domain.World;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -39,9 +40,23 @@ public class WorldJsonFileRepository implements WorldRepository {
     }
 
     @Override
+    public World findByName(String name) {
+        File file = new File(WORLDS_FOLDER + "/" + name + ".json");
+        if (! file.exists()){
+            return null;
+        }
+        try {
+            String json = FileUtils.readFileToString(file, Charset.defaultCharset());
+            return new Gson().fromJson(json, World.class);
+        } catch (Exception e) {
+            throw new FailedToReadWorldFile("Failed to read: " + file.getAbsolutePath(), e);
+        }
+    }
+
+    @Override
     public void save(World world) {
         String worldName = world.getName();
-        File file = new File("../saved/worlds/" + worldName + ".json");
+        File file = new File(WORLDS_FOLDER + "/" + worldName + ".json");
 
         createWorldsDirectory(file);
 

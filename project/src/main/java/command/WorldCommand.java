@@ -1,7 +1,8 @@
 package command;
 
-import utils.PrintLineUtil;
+import game.GameModel;
 import world.domain.World;
+import world.domain.WorldSession;
 import world.persist.WorldJsonFileRepository;
 import world.view.WorldMenus;
 
@@ -23,7 +24,7 @@ public class WorldCommand extends ArgumentCommand {
     }
 
     @Override
-    public void execute(String[] splitted) {
+    public void execute(String[] splitted, GameModel gameModel) {
         boolean noArgument = hasArgument(splitted);
         if (noArgument){
             System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help world");
@@ -36,6 +37,19 @@ public class WorldCommand extends ArgumentCommand {
         if (argument.equals("list")){
             processListWorldCommand();
         }
+        if (argument.equals("enter")){
+            processEnterWorldCommand(gameModel);
+        }
+    }
+
+    private void processEnterWorldCommand(GameModel gameModel) {
+        if (gameModel.hasWorldSession()){
+            System.out.println("Please leave the current world first.");
+            return;
+        }
+        WorldSession session = worldMenus.showEnterWorldMenu();
+        gameModel.startWorldSession(session);
+        showWorldEntered();
     }
 
     private void processListWorldCommand() {
@@ -51,5 +65,9 @@ public class WorldCommand extends ArgumentCommand {
 
     private void showWorldSaved(){
         System.out.println("[WORLD SAVED]");
+    }
+
+    private void showWorldEntered(){
+        System.out.println(String.format("[WORLD ENTERED]"));
     }
 }
