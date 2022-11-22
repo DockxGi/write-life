@@ -1,6 +1,7 @@
 package command;
 
 import game.GameModel;
+import player.persist.PlayerJsonFileRepository;
 import world.domain.World;
 import world.domain.WorldSession;
 import world.persist.WorldJsonFileRepository;
@@ -9,6 +10,7 @@ import world.view.WorldMenus;
 import java.util.List;
 
 import static utils.PrintLineUtil.printAsOrderedList;
+import static utils.PrintLineUtil.printEvent;
 
 public class WorldCommand extends ArgumentCommand {
 
@@ -26,24 +28,42 @@ public class WorldCommand extends ArgumentCommand {
     @Override
     public void execute(String[] splitted, GameModel gameModel) {
         boolean noArgument = hasArgument(splitted);
-        if (noArgument){
+        if (noArgument) {
             System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help world");
             return;
         }
         String argument = splitted[1];
-        if (argument.equals("new")){
+        if (argument.equals("new")) {
             processNewWorldCommand();
         }
-        if (argument.equals("list")){
+        if (argument.equals("list")) {
             processListWorldCommand();
         }
-        if (argument.equals("enter")){
+        if (argument.equals("enter")) {
             processEnterWorldCommand(gameModel);
+        }
+        if (argument.equals("leave")) {
+            processLeaveWorldCommand(gameModel);
         }
     }
 
+    private void processLeaveWorldCommand(GameModel gameModel) {
+        if (!gameModel.hasWorldSession()) {
+            System.out.println("You are not in a world. So you can not leave one.");
+            return;
+        }
+        PlayerJsonFileRepository.getInstance().save(gameModel.getPlayer());
+        showPlayerSaved();
+
+        WorldJsonFileRepository.getInstance().save(gameModel.getWorld());
+        showWorldSaved();
+
+        gameModel.stopWorldSession();
+        showWorldLeft();
+    }
+
     private void processEnterWorldCommand(GameModel gameModel) {
-        if (gameModel.hasWorldSession()){
+        if (gameModel.hasWorldSession()) {
             System.out.println("Please leave the current world first.");
             return;
         }
@@ -63,11 +83,19 @@ public class WorldCommand extends ArgumentCommand {
         showWorldSaved();
     }
 
-    private void showWorldSaved(){
-        System.out.println("[WORLD SAVED]");
+    private void showWorldSaved() {
+        printEvent("WORLD SAVED");
     }
 
-    private void showWorldEntered(){
-        System.out.println(String.format("[WORLD ENTERED]"));
+    private void showPlayerSaved() {
+        printEvent("PLAYER SAVED");
+    }
+
+    private void showWorldLeft() {
+        printEvent("WORLD LEFT");
+    }
+
+    private void showWorldEntered() {
+        printEvent("WORLD ENTERED");
     }
 }

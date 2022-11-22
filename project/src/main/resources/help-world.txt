@@ -20,3 +20,9 @@ world list
 ENTERING A WORLD
 -----------------
 world enter
+
+LEAVING A WORLD
+----------------
+leave world
+
+Remark: The world and player will be saved when you do this.

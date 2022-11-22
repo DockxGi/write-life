@@ -4,11 +4,11 @@ import game.GameModel;
 import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
 import player.view.PlayerMenus;
-import utils.PrintLineUtil;
 
 import java.util.List;
 
 import static utils.PrintLineUtil.printAsOrderedList;
+import static utils.PrintLineUtil.printEvent;
 
 public class PlayerCommand extends ArgumentCommand {
 
@@ -51,6 +51,6 @@ public class PlayerCommand extends ArgumentCommand {
     }
 
     private void showPlayerSaved() {
-        System.out.println("[PLAYER SAVED]");
+        printEvent("PLAYER SAVED");
     }
 }

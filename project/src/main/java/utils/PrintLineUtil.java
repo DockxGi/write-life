@@ -18,4 +18,11 @@ public class PrintLineUtil {
             nr++;
         }
     }
+
+    /**
+     * Prints that an event happened.
+     */
+    public static void printEvent(String event){
+        System.out.printf("[%s]%n", event);
+    }
 }
