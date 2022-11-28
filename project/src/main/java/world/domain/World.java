@@ -36,4 +36,24 @@ public class World {
         }
         rooms.add(room);
     }
+
+    public int amountOfRooms() {
+        if (rooms == null){
+            return 0;
+        }
+        return rooms.size();
+    }
+
+    public Room findRoom(String roomName) {
+        if (rooms == null){
+            return null;
+        }
+        for (Room room : rooms) {
+            String name = room.getName();
+            if (name.equalsIgnoreCase(roomName)){
+                return room;
+            }
+        }
+        return null;
+    }
 }

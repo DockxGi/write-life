@@ -41,4 +41,8 @@ public class Room {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    public void addExit(Exit exit, Direction direction) {
+        this.exits.put(direction, exit);
+    }
 }
