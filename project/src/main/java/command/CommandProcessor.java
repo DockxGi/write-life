@@ -18,6 +18,7 @@ public class CommandProcessor {
         supportCommand(new WorldCommand());
         supportCommand(new PlayerCommand());
         supportCommand(new LookCommand());
+        supportCommand(new RoomCommand());
     }
 
     private void supportCommand(Command command){

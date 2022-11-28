@@ -4,7 +4,7 @@ import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
 import player.persist.PlayerRepository;
 import questions.Answer;
-import questions.AnswerRequirements;
+import questions.OpenAnswerRequirements;
 import questions.Interviewer;
 import world.domain.World;
 import world.domain.WorldSession;
@@ -33,7 +33,7 @@ public class EnterWorldMenu {
     private World askWorldName() {
         Interviewer interviewer = new Interviewer();
 
-        AnswerRequirements requirements = new AnswerRequirements(false, 1, 20);
+        OpenAnswerRequirements requirements = new OpenAnswerRequirements(false, 1, 20);
         Answer answer = interviewer.askQuestion("Which world do you want to enter? (leave blank to cancel)", requirements);
 
         if (answer.isBlank()){
@@ -47,7 +47,7 @@ public class EnterWorldMenu {
     private Player askPlayerName() {
         Interviewer interviewer = new Interviewer();
 
-        AnswerRequirements requirements = new AnswerRequirements(false, 2, 20);
+        OpenAnswerRequirements requirements = new OpenAnswerRequirements(false, 2, 20);
         Answer answer = interviewer.askQuestion("With which player do you want to enter the world? (leave blank to cancel)", requirements);
 
         if (answer.isBlank()){

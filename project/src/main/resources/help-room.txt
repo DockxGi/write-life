@@ -1,0 +1,31 @@
+=============
+HELP -> ROOM
+=============
+A room is a specific location in a world. Rooms have a unique name.
+A room can be many things: a forest, the beach, a kitchen, cave, graveyard, ... .
+
+LANDING SPOTS
+--------------
+Some rooms are landing spots. See HELP LAND for more info.
+
+EXITS
+------
+Exits can be used to move to another room. You can use LOOK to see
+the available exits.
+
+FEATURES
+---------
+Features are things that player's can't take. They can be added or removed from the room.
+A room can contain max 10 different features.
+
+Examples: a bath, a chest, a bed, a stove
+
+ITEMS
+------
+Items are things that players can take. A room can contain max 10 different items.
+
+Examples: an apple, a book, a bottle of water
+
+CREATING A ROOM
+----------------
+room new

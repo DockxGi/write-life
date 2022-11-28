@@ -4,7 +4,7 @@ import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
 import player.persist.PlayerRepository;
 import questions.Answer;
-import questions.AnswerRequirements;
+import questions.OpenAnswerRequirements;
 import questions.Interviewer;
 
 public class NewPlayerMenu {
@@ -18,7 +18,7 @@ public class NewPlayerMenu {
     private String askPlayerName() {
         Interviewer interviewer = new Interviewer();
 
-        AnswerRequirements requirements = new AnswerRequirements(true, 2, 20);
+        OpenAnswerRequirements requirements = new OpenAnswerRequirements(true, 2, 20);
         Answer answer = interviewer.askQuestion("What is your firstname?", requirements);
 
         PlayerRepository playerRepository = PlayerJsonFileRepository.getInstance();

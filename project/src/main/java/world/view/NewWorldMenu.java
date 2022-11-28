@@ -1,7 +1,7 @@
 package world.view;
 
 import questions.Answer;
-import questions.AnswerRequirements;
+import questions.OpenAnswerRequirements;
 import questions.Interviewer;
 import world.domain.World;
 import world.persist.WorldJsonFileRepository;
@@ -21,7 +21,7 @@ public class NewWorldMenu {
     private String askWorldName() {
         Interviewer interviewer = new Interviewer();
 
-        AnswerRequirements requirements = new AnswerRequirements(true, 1, 20);
+        OpenAnswerRequirements requirements = new OpenAnswerRequirements(true, 1, 20);
         Answer answer = interviewer.askQuestion("Wat is the name of the new world?", requirements);
 
         WorldRepository worldRepository = WorldJsonFileRepository.getInstance();

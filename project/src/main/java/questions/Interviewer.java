@@ -21,56 +21,23 @@ public class Interviewer {
         do {
             answer = receiveAnswer(scanner, requirements);
             if (!answer.getValid()){
-                tellRequirements(requirements);
+                tellItsNotValid(requirements);
             }
         } while (!answer.getValid());
 
         return answer;
     }
 
-    private void tellRequirements(AnswerRequirements requirements) {
-        StringBuilder sb = new StringBuilder("Your answer is not valid. ");
-        if (requirements.isRequired()){
-            sb.append("The answer is required. ");
-        }
-        Integer minLength = requirements.getMinLength();
-        if (minLength != null){
-            sb.append("It should be minimal " + minLength + " characters long. ");
-        }
-        Integer maxLength = requirements.getMaxLength();
-        if (maxLength != null){
-            sb.append("It should be maximal " + maxLength + " characters long. ");
-        }
-        sb.append("Please give a new answer.\n> ");
-
-        System.out.print(sb);
+    private void tellItsNotValid(AnswerRequirements requirements) {
+        System.out.println("Your answer is not valid.\n");
+        String description = requirements.getDescription();
+        System.out.println(description);
+        System.out.println("Please give a new answer.\n> ");
     }
 
     private Answer receiveAnswer(Scanner scanner, AnswerRequirements requirements) {
         Answer answer = new Answer(scanner.nextLine());
-
-        if (requirements.isRequired() && answer.isBlank()){
-            answer.setValid(false);
-            return answer;
-        }
-        if (!requirements.isRequired() && answer.isBlank()){
-            answer.setValid(true);
-            return answer;
-        }
-
-        Integer minLength = requirements.getMinLength();
-        if (minLength != null && answer.length() < minLength){
-            answer.setValid(false);
-            return answer;
-        }
-
-        Integer maxLength = requirements.getMaxLength();
-        if (maxLength != null && answer.length() > maxLength){
-            answer.setValid(false);
-            return answer;
-        }
-
-        answer.setValid(true);
+        requirements.validateAnswer(answer);
         return answer;
     }
 

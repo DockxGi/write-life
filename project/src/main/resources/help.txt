@@ -15,11 +15,12 @@ BEGINNER TOPICS
 2. world
 3. player
 4. look
-5. land
-6. move
-7. take
-8. drop
-9. wear
+5. room
+6. land
+7. move
+8. take
+9. drop
+10. wear
 
 INTERMEDIATE TOPICS
 --------------------

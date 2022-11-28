@@ -1,7 +1,7 @@
 package command;
 
 import game.GameModel;
-import world.domain.Room;
+import world.domain.room.Room;
 
 public class LookCommand extends ArgumentCommand {
     @Override

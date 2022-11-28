@@ -1,11 +1,9 @@
 package game;
 
 import player.domain.Player;
-import world.domain.Room;
+import world.domain.room.Room;
 import world.domain.World;
 import world.domain.WorldSession;
-import world.persist.WorldJsonFileRepository;
-import world.persist.WorldRepository;
 
 /**
  * Represents the state of the current game.

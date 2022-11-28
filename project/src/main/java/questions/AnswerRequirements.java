@@ -1,19 +1,14 @@
 package questions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+public interface AnswerRequirements {
 
-/**
- * The requirements for answer of the user.
- */
-@Getter
-@AllArgsConstructor
-public class AnswerRequirements {
-    //is the answer required?
-    private boolean required;
+    /**
+     * Shows user readable text description of the requirements.
+     */
+    String getDescription();
 
-    //if an answer is given, what is the minimum length of it?
-    private Integer minLength;
-    //if the answer is given, what is the max length of it?
-    private Integer maxLength;
+    /**
+     * Marks the answer to invalid if the answer is not meeting the requirements.
+     */
+    void validateAnswer(Answer answer);
 }
