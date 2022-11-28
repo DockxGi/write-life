@@ -21,6 +21,9 @@ ENTERING A WORLD
 -----------------
 world enter
 
+Remark: When you enter the world then you flow above it.
+Use HELP LAND to see how to land in a specific room.
+
 LEAVING A WORLD
 ----------------
 leave world

@@ -1,0 +1,47 @@
+=============
+HELP -> LOOK
+=============
+When you are in a world you can look around.
+
+LOOKING IN THE CURRENT ROOM
+----------------------------
+look
+
+Remark: When you look in the current room you will also receive a message that
+tells you in which directions there are exits to other rooms.
+
+Example:
+
+You are in a nicely decorated kitchen.
+
+Exits:
+n -> closed door
+d -> trapdoor (locked)
+e -> open window
+
+LOOKING IN A DIRECTION
+-----------------------
+look <direction>
+
+What you see when you look in a direction will depend on (the presence or) type of
+exit in that direction. You can see the next room through an open window. But you
+can not see the next room through a closed door (unless it is a glass door).
+
+Examples:
+
+look east
+look e
+look up
+look u
+
+Possible values for the direction are:
+- north / n
+- east / e
+- south / s
+- west / w
+- up / u
+- down / d
+- north-east / ne
+- north-west / nw
+- south-east / se
+- south-west / sw

@@ -18,7 +18,7 @@ public class HelpCommand extends ArgumentCommand{
 
     @Override
     public void execute(String[] splitted, GameModel gameModel) {
-        boolean noArgument = hasArgument(splitted);
+        boolean noArgument = !hasArgument(splitted);
         if (noArgument){
             System.out.println(resourceReader.readTextFile("help.txt"));
             return;

@@ -25,7 +25,7 @@ public class PlayerCommand extends ArgumentCommand {
 
     @Override
     public void execute(String[] splitted, GameModel gameModel) {
-        boolean noArgument = hasArgument(splitted);
+        boolean noArgument = !hasArgument(splitted);
         if (noArgument){
             System.out.println("The command " + splitted[0] + " needs an argument. For more info type: help player");
             return;

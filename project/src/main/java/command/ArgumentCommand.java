@@ -8,7 +8,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public abstract class ArgumentCommand implements Command {
 
     protected boolean hasArgument(String[] splitted){
-        return splitted.length < 2 || isBlank(splitted[1]);
+        return splitted.length > 1 && !isBlank(splitted[1]);
     }
 
 }

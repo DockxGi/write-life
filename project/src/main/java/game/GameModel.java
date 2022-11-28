@@ -1,6 +1,7 @@
 package game;
 
 import player.domain.Player;
+import world.domain.Room;
 import world.domain.World;
 import world.domain.WorldSession;
 import world.persist.WorldJsonFileRepository;
@@ -40,5 +41,10 @@ public class GameModel {
             return null;
         }
         return worldSession.getWorld();
+    }
+
+    public Room getCurrentRoom() {
+        //todo: rooms are not implemented yet, once implemented we should return it
+        return null;
     }
 }
