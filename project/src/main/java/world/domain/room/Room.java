@@ -45,4 +45,8 @@ public class Room {
     public void addExit(Exit exit, Direction direction) {
         this.exits.put(direction, exit);
     }
+
+    public Map<Direction, Exit> getExits() {
+        return exits;
+    }
 }

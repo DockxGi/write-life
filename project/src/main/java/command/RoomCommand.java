@@ -56,7 +56,7 @@ public class RoomCommand extends ArgumentCommand {
 
         //destination room
         Room destination = roomMenus.showChooseRoomMenu(game, "Which room is at the other side of the exit? (empty to cancel)");
-        if (room == null){
+        if (destination == null){
             showCanceled();
             return;
         }
