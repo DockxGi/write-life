@@ -1,0 +1,31 @@
+=============
+HELP -> MOVE
+=============
+When you are in a room you can move via an exit to another room.
+You can use the look command to see where the exits are.
+
+MOVING IN A DIRECTION
+----------------------
+move <direction>
+
+Exits that are locked will block your movement. So make sure to unlock such
+exits.
+
+Examples:
+
+move east
+move e
+move up
+move u
+
+Possible values for the direction are:
+- north / n
+- east / e
+- south / s
+- west / w
+- up / u
+- down / d
+- north-east / ne
+- north-west / nw
+- south-east / se
+- south-west / sw

@@ -1,11 +1,11 @@
-package command;
+package command.playing;
 
+import command.ArgumentCommand;
 import game.GameModel;
 import world.domain.Direction;
 import world.domain.room.Exit;
 import world.domain.room.Room;
 
-import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 

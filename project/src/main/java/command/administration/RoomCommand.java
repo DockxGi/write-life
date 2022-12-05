@@ -1,5 +1,6 @@
-package command;
+package command.administration;
 
+import command.ArgumentCommand;
 import game.GameModel;
 import world.domain.World;
 import world.domain.room.Exit;

@@ -1,5 +1,6 @@
-package command;
+package command.playing;
 
+import command.ArgumentCommand;
 import game.GameModel;
 import utils.PrintLineUtil;
 import world.domain.room.Room;

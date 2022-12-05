@@ -1,5 +1,10 @@
 package command;
 
+import command.administration.PlayerCommand;
+import command.administration.RoomCommand;
+import command.administration.WorldCommand;
+import command.playing.LandCommand;
+import command.playing.LookCommand;
 import game.GameModel;
 
 import java.util.HashMap;

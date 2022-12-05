@@ -1,5 +1,6 @@
-package command;
+package command.administration;
 
+import command.ArgumentCommand;
 import game.GameModel;
 import player.domain.Player;
 import player.persist.PlayerJsonFileRepository;
