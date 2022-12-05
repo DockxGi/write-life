@@ -32,7 +32,10 @@ Possible types: indoor, outdoor, free, non-free
 
 ADDING A FEATURE TO A ROOM
 ---------------------------
-room add-feature
+room add-feature <featureType>
+
+Example: add-feature rocks
+Remark: use "feature list" to see the possible values
 
 INTERACTING WITH A FEATURE
 ---------------------------

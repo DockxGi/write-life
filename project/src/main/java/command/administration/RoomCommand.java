@@ -2,10 +2,14 @@ package command.administration;
 
 import command.ArgumentCommand;
 import game.GameModel;
+import player.domain.Player;
 import world.domain.World;
+import world.domain.cost.Price;
 import world.domain.room.Exit;
 import world.domain.room.Room;
 import world.domain.room.RoomType;
+import world.domain.room.feature.Feature;
+import world.domain.room.feature.FeatureType;
 import world.persist.WorldJsonFileRepository;
 import world.view.RoomMenus;
 
@@ -41,7 +45,40 @@ public class RoomCommand extends ArgumentCommand {
             processAddExitCommand(game);
         } else if (argument.equals("type")){
             processRoomTypeCommand(splitted, game);
+        } else if (argument.equals("add-feature")){
+            processAddFeatureCommand(splitted, game);
         }
+    }
+
+    private void processAddFeatureCommand(String[] splitted, GameModel game) {
+        if (splitted.length < 3){
+            System.out.println("You have to specify which type of feature you want to add. See: HELP FEATURE");
+            return;
+        }
+        String argument = splitted[2];
+        FeatureType type = FeatureType.fromName(argument);
+        if (type == null){
+            System.out.println(argument + " is not a valid type of feature. See: HELP FEATURE");
+            return;
+        }
+        Price price = type.getPrice();
+        Player player = game.getPlayer();
+        if (!player.canPay(price)){
+            System.out.println("You can not pay the price of the feature. See: HELP FEATURE");
+            return;
+        }
+        Room currentRoom = game.getCurrentRoom();
+        if (!currentRoom.canFeatureTypeBeAdded(type)){
+            System.out.println("You can not add this type of feature to the room.");
+            return;
+        }
+        Feature feature = roomMenus.showAddFeatureMenu(game.getCurrentRoom(), type);
+        if (feature == null){
+            System.out.println("[FEATURE CREATION FAILED]");
+        }
+        currentRoom.addFeature(feature);
+        WorldJsonFileRepository.getInstance().save(game.getWorld());
+        showRoomChangedAndSaved();
     }
 
     private void processRoomTypeCommand(String[] splitted, GameModel game) {
@@ -59,6 +96,7 @@ public class RoomCommand extends ArgumentCommand {
             System.out.println(argument + " is not a valid room type. See: HELP ROOM");
         }
         game.changeRoomType(roomType);
+        WorldJsonFileRepository.getInstance().save(game.getWorld());
         showRoomChangedAndSaved();
     }
 

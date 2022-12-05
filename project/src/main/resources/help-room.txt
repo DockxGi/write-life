@@ -45,7 +45,10 @@ Possible types: indoor, outdoor
 
 ADDING A FEATURE TO A ROOM
 ---------------------------
-room add-feature
+room add-feature <featureType>
 
 Remark: You need to be in the room. The room needs to be of the correct type.
+Rooms also have a maximum capacity. A room can have max 10 features.
+Some types of features can not be added more than once (or more than a few times).
+
 See: HELP FEATURE

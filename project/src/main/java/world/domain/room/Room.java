@@ -1,13 +1,15 @@
 package world.domain.room;
 
 import lombok.Getter;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import world.domain.Direction;
+import world.domain.room.feature.Feature;
+import world.domain.room.feature.FeatureType;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 public class Room {
     @Getter
@@ -21,12 +23,15 @@ public class Room {
 
     private Map<Direction, Exit> exits;
 
+    private List<Feature> features;
+
     public Room(String name, String description, boolean ladingSpot) {
         this.name = name.trim().toLowerCase(Locale.ROOT);
         this.description = description;
         this.ladingSpot = ladingSpot;
 
         exits = new HashMap<>();
+        features = new ArrayList<>();
     }
 
     /**
@@ -63,5 +68,52 @@ public class Room {
     //TODO: remove not supported features when room changes type
     public void changeType(RoomType roomType) {
         this.type = roomType;
+    }
+
+    private int countFeaturesOfType(FeatureType type){
+        if (isEmpty(features)){
+            return 0;
+        }
+
+        int i = 0;
+        for (Feature feature : features) {
+            if (feature.getType().equals(type)){
+                i++;
+            }
+        }
+        return i;
+    }
+
+    private int countAllFeatures(){
+        if (isEmpty(features)){
+            return 0;
+        }
+        return features.size();
+    }
+
+    public boolean canFeatureTypeBeAdded(FeatureType type) {
+        RoomType requiredRoomType = type.getRoomType();
+        boolean roomTypeOk = requiredRoomType == null || requiredRoomType.equals(this.getType());
+
+        int maxInRoom = type.getMaxInRoom();
+        boolean maxInRoomOk = countFeaturesOfType(type) < maxInRoom;
+
+        boolean capacityReached = countAllFeatures() >= 10;
+
+        return !capacityReached && roomTypeOk && maxInRoomOk;
+    }
+
+    public boolean hasFeatureWithName(String featureName) {
+        if (isEmpty(features)){
+            return false;
+        }
+        return features.stream().anyMatch(feature -> feature.getName().equals(featureName));
+    }
+
+    public void addFeature(Feature feature) {
+        if (features == null){
+            features = new ArrayList<>();
+        }
+        this.features.add(feature);
     }
 }
