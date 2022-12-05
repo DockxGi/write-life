@@ -43,7 +43,7 @@ public class PrintLineUtil {
 
         String title = join(split, " ");
         System.out.println(title);
-        String underLine = repeat(underLineChar, split.length + 1);
+        String underLine = repeat(underLineChar, text.length() + 1);
         System.out.println(underLine);
     }
 

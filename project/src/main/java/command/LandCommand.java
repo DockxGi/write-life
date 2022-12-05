@@ -3,6 +3,7 @@ package command;
 import game.GameModel;
 import utils.PrintLineUtil;
 import world.domain.room.Room;
+import world.view.RoomMenus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,15 @@ public class LandCommand extends ArgumentCommand {
             return;
         }
 
-        //todo: support landing in a room
+        RoomMenus roomMenus = new RoomMenus();
+        Room room = roomMenus.showChooseRoomMenu(game, "In which room do you want to land? (empty to cancel)");
+        if (room == null){
+            return;
+        }
+        if (!room.isLadingSpot()){
+            System.out.println("You can not land in the room " + room.getName() + " because it is not a landing spot.");
+            return;
+        }
+        game.landInRoom(room);
     }
 }

@@ -42,7 +42,10 @@ public class GameModel {
     }
 
     public Room getCurrentRoom() {
-        //todo: rooms are not implemented yet, once implemented we should return it
-        return null;
+        return worldSession.getCurrentRoom();
+    }
+
+    public void landInRoom(Room room) {
+        worldSession.landInRoom(room);
     }
 }
