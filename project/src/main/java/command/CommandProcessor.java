@@ -3,6 +3,7 @@ package command;
 import command.administration.PlayerCommand;
 import command.administration.RoomCommand;
 import command.administration.WorldCommand;
+import command.playing.FeatureCommand;
 import command.playing.LandCommand;
 import command.playing.LookCommand;
 import command.playing.MoveCommand;
@@ -27,6 +28,7 @@ public class CommandProcessor {
         supportCommand(new RoomCommand());
         supportCommand(new LandCommand());
         supportCommand(new MoveCommand());
+        supportCommand(new FeatureCommand());
     }
 
     private void supportCommand(Command command){

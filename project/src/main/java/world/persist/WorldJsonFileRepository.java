@@ -1,6 +1,7 @@
 package world.persist;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
 import world.domain.World;
 
@@ -60,7 +61,8 @@ public class WorldJsonFileRepository implements WorldRepository {
 
         createWorldsDirectory(file);
 
-        String json = new Gson().toJson(world);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(world);
         try {
             Files.write(Paths.get(file.getPath()), json.getBytes());
         } catch (IOException e) {

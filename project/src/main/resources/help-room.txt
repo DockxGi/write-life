@@ -48,4 +48,4 @@ ADDING A FEATURE TO A ROOM
 room add-feature
 
 Remark: You need to be in the room. The room needs to be of the correct type.
-See: HELP FEATURES
+See: HELP FEATURE
