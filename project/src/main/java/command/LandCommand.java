@@ -71,5 +71,6 @@ public class LandCommand extends ArgumentCommand {
             return;
         }
         game.landInRoom(room);
+        System.out.println("[LANDED]");
     }
 }
