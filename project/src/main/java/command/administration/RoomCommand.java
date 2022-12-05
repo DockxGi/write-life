@@ -5,6 +5,7 @@ import game.GameModel;
 import world.domain.World;
 import world.domain.room.Exit;
 import world.domain.room.Room;
+import world.domain.room.RoomType;
 import world.persist.WorldJsonFileRepository;
 import world.view.RoomMenus;
 
@@ -36,10 +37,29 @@ public class RoomCommand extends ArgumentCommand {
         String argument = splitted[1];
         if (argument.equals("new")){
             processNewRoomCommand(game);
-        }
-        if (argument.equals("add-exit")){
+        } else if (argument.equals("add-exit")){
             processAddExitCommand(game);
+        } else if (argument.equals("type")){
+            processRoomTypeCommand(splitted, game);
         }
+    }
+
+    private void processRoomTypeCommand(String[] splitted, GameModel game) {
+        if (game.getCurrentRoom() == null){
+            System.out.println("You must be in the room to change the type of the room.");
+            return;
+        }
+        if (splitted.length < 3){
+            System.out.println("You should specify the type of the room. See: HELP ROOM");
+            return;
+        }
+        String argument = splitted[2];
+        RoomType roomType = RoomType.fromName(argument);
+        if (roomType == null){
+            System.out.println(argument + " is not a valid room type. See: HELP ROOM");
+        }
+        game.changeRoomType(roomType);
+        showRoomChangedAndSaved();
     }
 
     private void processAddExitCommand(GameModel game) {
@@ -75,6 +95,10 @@ public class RoomCommand extends ArgumentCommand {
 
         WorldJsonFileRepository.getInstance().save(world);
         showRoomSaved();
+    }
+
+    private void showRoomChangedAndSaved(){
+        printEvent("ROOM CHANGED AND WORLD SAVED");
     }
 
     private void showRoomSaved() {

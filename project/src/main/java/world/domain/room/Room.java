@@ -1,7 +1,6 @@
 package world.domain.room;
 
 import lombok.Getter;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import world.domain.Direction;
 
@@ -17,6 +16,8 @@ public class Room {
     private String description;
     @Getter
     private boolean ladingSpot; //determines if player can land directly into this room
+    @Getter
+    private RoomType type; //type of room, is optional
 
     private Map<Direction, Exit> exits;
 
@@ -57,5 +58,10 @@ public class Room {
             return null;
         }
         return this.exits.get(direction);
+    }
+
+    //TODO: remove not supported features when room changes type
+    public void changeType(RoomType roomType) {
+        this.type = roomType;
     }
 }

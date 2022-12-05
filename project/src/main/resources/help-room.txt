@@ -34,8 +34,18 @@ ADDING AN EXIT TO A ROOM
 -------------------------
 room add-exit
 
+Remark: An exit must lead somewhere. So you need at least have two rooms to create an exit.
+
+ASSIGNING A TYPE TO THE ROOM
+-----------------------------
+room type <type>
+
+Remark: You need to be in the room.
+Possible types: indoor, outdoor
+
 ADDING A FEATURE TO A ROOM
 ---------------------------
 room add-feature
 
-Remark: An exit must lead somewhere. So you need at least have two rooms to create an exit.
+Remark: You need to be in the room. The room needs to be of the correct type.
+See: HELP FEATURES

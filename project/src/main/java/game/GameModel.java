@@ -4,6 +4,7 @@ import player.domain.Player;
 import world.domain.room.Room;
 import world.domain.World;
 import world.domain.WorldSession;
+import world.domain.room.RoomType;
 
 /**
  * Represents the state of the current game.
@@ -51,5 +52,9 @@ public class GameModel {
 
     public void moveToRoom(Room room) {
         worldSession.moveToRoom(room);
+    }
+
+    public void changeRoomType(RoomType roomType) {
+        worldSession.changeRoomType(roomType);
     }
 }

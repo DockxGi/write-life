@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import player.domain.Player;
 import world.domain.room.Room;
+import world.domain.room.RoomType;
 
 /**
  * Represents the game-session that a player has in the world that he/she entered.
@@ -34,4 +35,7 @@ public class WorldSession {
     }
 
 
+    public void changeRoomType(RoomType roomType) {
+        currentRoom.changeType(roomType);
+    }
 }

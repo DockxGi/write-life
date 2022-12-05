@@ -1,0 +1,45 @@
+=================
+HELP -> FEATURES
+=================
+Features are fixed objects in a room. You can add and remove them.
+But you can not pick them up. The game provides a list of possible features.
+
+Examples: oak-trees, a bath, a statue
+
+FREE VS NON-FREE FEATURES
+--------------------------
+Some features come with a cost. This cost is a number of resources.
+To make a wooden door, you need wood. To create a golden statue, you need gold.
+These are the non-free features.
+
+The basic resources you need are provided by free features.
+Free features are rocks and weather.
+You can find free items (seeds and stones) by interacting with the rocks.
+The weather can give you free water and wind.
+
+INDOOR VS OUTDOOR FEATURES
+---------------------------
+You can not plant trees in the kitchen.
+Some features are only allowed in indoor rooms.
+Some features are only allowed in outdoor rooms.
+
+LIST OF FEATURES
+-----------------
+feature list
+feature list <type>
+
+Possible types: indoor, outdoor, free, non-free
+
+ADDING A FEATURE TO A ROOM
+---------------------------
+room add-feature
+
+INTERACTING WITH A FEATURE
+---------------------------
+feature use <name>
+
+Each feature maps to zero, one or more actions.
+With the "feature use" command you can interact with a feature of
+your current room.
+
+Examples: feature use rocks, feature use oak-trees
