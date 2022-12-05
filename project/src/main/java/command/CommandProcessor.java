@@ -5,6 +5,7 @@ import command.administration.RoomCommand;
 import command.administration.WorldCommand;
 import command.playing.LandCommand;
 import command.playing.LookCommand;
+import command.playing.MoveCommand;
 import game.GameModel;
 
 import java.util.HashMap;
@@ -25,6 +26,7 @@ public class CommandProcessor {
         supportCommand(new LookCommand());
         supportCommand(new RoomCommand());
         supportCommand(new LandCommand());
+        supportCommand(new MoveCommand());
     }
 
     private void supportCommand(Command command){

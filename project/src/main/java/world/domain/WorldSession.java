@@ -25,7 +25,13 @@ public class WorldSession {
         this.currentRoom = room;
     }
 
+    public void moveToRoom(Room room) {
+        currentRoom = room;
+    }
+
     public Room getCurrentRoom() {
         return this.currentRoom;
     }
+
+
 }

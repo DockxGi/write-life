@@ -1,6 +1,8 @@
 package world.domain.room;
 
 import lombok.Getter;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.MapUtils;
 import world.domain.Direction;
 
 import java.util.HashMap;
@@ -48,5 +50,12 @@ public class Room {
 
     public Map<Direction, Exit> getExits() {
         return exits;
+    }
+
+    public Exit getExit(Direction direction) {
+        if (MapUtils.isEmpty(exits)){
+            return null;
+        }
+        return this.exits.get(direction);
     }
 }

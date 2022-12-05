@@ -48,4 +48,8 @@ public class GameModel {
     public void landInRoom(Room room) {
         worldSession.landInRoom(room);
     }
+
+    public void moveToRoom(Room room) {
+        worldSession.moveToRoom(room);
+    }
 }
