@@ -1,9 +1,16 @@
 package world.domain;
 
+import org.apache.commons.collections.CollectionUtils;
 import world.domain.room.Room;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.Collections.emptyList;
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 public class World {
     private String name;
@@ -55,5 +62,14 @@ public class World {
             }
         }
         return null;
+    }
+
+    public List<Room> getLandingSpots() {
+        if (isEmpty(rooms)){
+            return emptyList();
+        }
+        return rooms.stream()
+                .filter(Room::isLadingSpot)
+                .collect(Collectors.toList());
     }
 }

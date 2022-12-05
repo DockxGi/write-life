@@ -1,0 +1,13 @@
+=============
+HELP -> LAND
+=============
+You can land to a room if you hover above the world.
+Not every room is a landing spot.
+
+LIST OF LANDING SPOTS
+----------------------
+land list
+
+LAND TO A ROOM
+---------------
+land
