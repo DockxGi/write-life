@@ -2,7 +2,7 @@ package command.administration;
 
 import command.ArgumentCommand;
 import game.GameModel;
-import player.domain.Player;
+import character.player.domain.Player;
 import world.domain.World;
 import world.domain.cost.Price;
 import world.domain.room.Exit;

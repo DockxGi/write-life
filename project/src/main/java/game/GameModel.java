@@ -1,6 +1,6 @@
 package game;
 
-import player.domain.Player;
+import character.player.domain.Player;
 import world.domain.room.Room;
 import world.domain.World;
 import world.domain.WorldSession;

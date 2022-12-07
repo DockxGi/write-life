@@ -2,7 +2,7 @@ package command.administration;
 
 import command.ArgumentCommand;
 import game.GameModel;
-import player.persist.PlayerJsonFileRepository;
+import character.player.persist.PlayerJsonFileRepository;
 import world.domain.World;
 import world.domain.WorldSession;
 import world.persist.WorldJsonFileRepository;

@@ -1,8 +1,8 @@
-package player.view;
+package character.player.view;
 
-import player.domain.Player;
-import player.persist.PlayerJsonFileRepository;
-import player.persist.PlayerRepository;
+import character.player.domain.Player;
+import character.player.persist.PlayerJsonFileRepository;
+import character.player.persist.PlayerRepository;
 import questions.Answer;
 import questions.OpenAnswerRequirements;
 import questions.Interviewer;

@@ -1,8 +1,7 @@
 package world.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import player.domain.Player;
+import character.player.domain.Player;
 import world.domain.room.Room;
 import world.domain.room.RoomType;
 

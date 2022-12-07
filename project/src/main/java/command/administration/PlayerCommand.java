@@ -2,9 +2,9 @@ package command.administration;
 
 import command.ArgumentCommand;
 import game.GameModel;
-import player.domain.Player;
-import player.persist.PlayerJsonFileRepository;
-import player.view.PlayerMenus;
+import character.player.domain.Player;
+import character.player.persist.PlayerJsonFileRepository;
+import character.player.view.PlayerMenus;
 
 import java.util.List;
 

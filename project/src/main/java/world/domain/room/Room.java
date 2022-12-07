@@ -116,4 +116,18 @@ public class Room {
         }
         this.features.add(feature);
     }
+
+    public Feature featureWithName(String featureName) {
+        if (isEmpty(features)){
+            return null;
+        }
+        return features.stream()
+                .filter(feature -> feature.getName().equals(featureName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<Feature> getFeatures() {
+        return features;
+    }
 }

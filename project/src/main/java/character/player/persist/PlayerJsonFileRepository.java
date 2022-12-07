@@ -1,10 +1,8 @@
-package player.persist;
+package character.player.persist;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import player.domain.Player;
-import world.persist.FailedToSaveWorld;
+import character.player.domain.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +10,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,15 +1,20 @@
 package command.playing;
 
 import command.ArgumentCommand;
+import command.describers.FeatureDescriber;
+import command.describers.LevelOfDetail;
 import game.GameModel;
 import world.domain.Direction;
 import world.domain.room.Exit;
 import world.domain.room.Room;
+import world.domain.room.feature.Feature;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import static java.util.Comparator.comparingInt;
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static org.apache.commons.collections.MapUtils.isEmpty;
 import static utils.PrintLineUtil.printAsTitle;
 
@@ -45,6 +50,13 @@ public class LookCommand extends ArgumentCommand {
         String description = room.getDescription();
         if (description != null){
             System.out.println(description);
+        }
+
+        List<Feature> features = room.getFeatures();
+        if (!isEmpty(features)){
+            FeatureDescriber featureDescriber = new FeatureDescriber();
+            String featuresDescription = featureDescriber.describeList(features, LevelOfDetail.LOW);
+            System.out.println("\n-> Features: " + featuresDescription);
         }
 
         Map<Direction, Exit> exits = room.getExits();

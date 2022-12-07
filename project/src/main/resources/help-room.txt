@@ -52,3 +52,10 @@ Rooms also have a maximum capacity. A room can have max 10 features.
 Some types of features can not be added more than once (or more than a few times).
 
 See: HELP FEATURE
+
+SEARCHING THE ROOM
+-------------------
+search room
+search feature <featureName>
+
+SEE: HELP SEARCH

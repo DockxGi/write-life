@@ -1,6 +1,6 @@
-package player.view;
+package character.player.view;
 
-import player.domain.Player;
+import character.player.domain.Player;
 
 /**
  * Facade for showing a menu of the player-command.

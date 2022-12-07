@@ -13,4 +13,9 @@ public class Item {
     private ItemType type;
     @Getter
     private Integer quality; //value from 0 to 100, it is a percentage
+
+    public Item(ItemType type, Integer quality) {
+        this.type = type;
+        this.quality = quality;
+    }
 }

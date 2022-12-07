@@ -1,6 +1,6 @@
-package player.persist;
+package character.player.persist;
 
-import player.domain.Player;
+import character.player.domain.Player;
 
 import java.util.List;
 

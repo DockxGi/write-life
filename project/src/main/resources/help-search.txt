@@ -1,0 +1,18 @@
+===============
+HELP -> SEARCH
+===============
+You can search in rooms and around some features of the room to find items.
+
+SEARCH IN A ROOM
+-----------------
+search room
+
+You search in your current room. You can find items that are hidden by other players.
+
+SEARCH AROUND A FEATURE
+------------------------
+search feature <featureName>
+(replace empty spaces in featureName with underscore characters "_")
+
+Some features can be searched.
+You can search around rocks and trees, but you can not search the weather.

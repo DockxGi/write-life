@@ -37,12 +37,8 @@ room add-feature <featureType>
 Example: add-feature rocks
 Remark: use "feature list" to see the possible values
 
-INTERACTING WITH A FEATURE
----------------------------
-feature use <name>
+SEARCHING A FEATURE
+--------------------
+search <featureName>
 
-Each feature maps to zero, one or more actions.
-With the "feature use" command you can interact with a feature of
-your current room.
-
-Examples: feature use rocks, feature use oak-trees
+see: HELP SEARCH

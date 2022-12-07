@@ -1,4 +1,4 @@
-package player.persist;
+package character.player.persist;
 
 public class FailedToSavePlayer extends RuntimeException{
     public FailedToSavePlayer(String message) {
