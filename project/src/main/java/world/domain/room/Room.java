@@ -4,11 +4,13 @@ import lombok.Getter;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import world.domain.Direction;
+import world.domain.item.Item;
 import world.domain.room.feature.Feature;
 import world.domain.room.feature.FeatureType;
 
 import java.util.*;
 
+import static java.util.Collections.emptyList;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 public class Room {
@@ -25,6 +27,8 @@ public class Room {
 
     private List<Feature> features;
 
+    private transient List<Item> tempItems; //items that are temporarily in the room (they are not saved)
+
     public Room(String name, String description, boolean ladingSpot) {
         this.name = name.trim().toLowerCase(Locale.ROOT);
         this.description = description;
@@ -32,6 +36,7 @@ public class Room {
 
         exits = new HashMap<>();
         features = new ArrayList<>();
+        tempItems = new ArrayList<>();
     }
 
     /**
@@ -129,5 +134,13 @@ public class Room {
 
     public List<Feature> getFeatures() {
         return features;
+    }
+
+    public List<Item> getItems(){
+        return tempItems;
+    }
+
+    public void replaceTempItems(List<Item> items) {
+        this.tempItems = items;
     }
 }

@@ -60,6 +60,9 @@ public class Player {
      */
     public List<Item> searchAround(Feature feature) {
         List<SearchChance> chances = FeatureSearchChances.searchChancesFor(feature.getType());
+        if (chances == null){
+            return null;
+        }
         List<Item> itemsFound = new ArrayList<>();
         for (SearchChance chance : chances) {
             Item item = tryToFindItem(feature, chance);

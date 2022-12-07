@@ -2,9 +2,11 @@ package command.playing;
 
 import command.ArgumentCommand;
 import command.describers.FeatureDescriber;
+import command.describers.ItemDescriber;
 import command.describers.LevelOfDetail;
 import game.GameModel;
 import world.domain.Direction;
+import world.domain.item.Item;
 import world.domain.room.Exit;
 import world.domain.room.Room;
 import world.domain.room.feature.Feature;
@@ -51,14 +53,21 @@ public class LookCommand extends ArgumentCommand {
         if (description != null){
             System.out.println(description);
         }
+        showItems(room);
+        showFeatures(room);
+        showExits(room);
+    }
 
-        List<Feature> features = room.getFeatures();
-        if (!isEmpty(features)){
-            FeatureDescriber featureDescriber = new FeatureDescriber();
-            String featuresDescription = featureDescriber.describeList(features, LevelOfDetail.LOW);
-            System.out.println("\n-> Features: " + featuresDescription);
+    private void showItems(Room room) {
+        List<Item> items = room.getItems();
+        if(!isEmpty(items)){
+            ItemDescriber itemDescriber = new ItemDescriber();
+            String itemsDescription = itemDescriber.describeList(items, LevelOfDetail.MEDIUM);
+            System.out.println("\n" + itemsDescription);
         }
+    }
 
+    private void showExits(Room room) {
         Map<Direction, Exit> exits = room.getExits();
         if (isEmpty(exits)){
             System.out.println("\n-> Exits: none");
@@ -69,6 +78,15 @@ public class LookCommand extends ArgumentCommand {
         directions.stream()
                 .sorted(comparingInt(Direction::getOrder))
                 .forEach(direction -> System.out.println(direction.name() + " " + shortExitDescription(exits.get(direction))));
+    }
+
+    private void showFeatures(Room room) {
+        List<Feature> features = room.getFeatures();
+        if (!isEmpty(features)){
+            FeatureDescriber featureDescriber = new FeatureDescriber();
+            String featuresDescription = featureDescriber.describeList(features, LevelOfDetail.LOW);
+            System.out.println("\n-> Features: " + featuresDescription);
+        }
     }
 
     private String shortExitDescription(Exit exit) {

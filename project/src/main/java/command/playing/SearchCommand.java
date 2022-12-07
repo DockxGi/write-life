@@ -5,6 +5,7 @@ import command.ArgumentCommand;
 import command.describers.ItemDescriber;
 import command.describers.LevelOfDetail;
 import game.GameModel;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import world.domain.item.Item;
 import world.domain.room.Room;
@@ -13,6 +14,7 @@ import world.domain.room.feature.Feature;
 import java.util.List;
 
 import static command.describers.LevelOfDetail.MEDIUM;
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 public class SearchCommand extends ArgumentCommand {
     @Override
@@ -51,10 +53,16 @@ public class SearchCommand extends ArgumentCommand {
             System.out.println("There is no feature with the name " + featureNameWithoutDoubleQuotes + " in the room.");
             return;
         }
-
         List<Item> items = player.searchAround(feature);
-        showSearchResult(items);
-        //todo: let the player choose what to take
+        if (!isEmpty(items)){
+            System.out.println("You found:");
+            showSearchResult(items);
+            System.out.println();
+            System.out.println("The items are temporarily added to the room. Take them before you lose them out of sight.");
+        } else {
+            System.out.println("You found no items.");
+        }
+        currentRoom.replaceTempItems(items);
     }
 
     private void showSearchResult(List<Item> items) {
