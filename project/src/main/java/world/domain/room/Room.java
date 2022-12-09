@@ -180,4 +180,12 @@ public class Room {
         }
         return tempItems.get(position - 1);
     }
+
+    public boolean hasFeatureOfType(FeatureType type) {
+        if (isEmpty(features)){
+            return false;
+        }
+        return features.stream()
+                .anyMatch(feature -> feature.getType().equals(type));
+    }
 }
