@@ -4,6 +4,7 @@ import character.Inventory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import world.domain.cost.ItemQualityRequirement;
 import world.domain.cost.Price;
 import world.domain.item.Item;
 import world.domain.item.ItemType;
@@ -13,7 +14,10 @@ import world.domain.room.search.SearchChance;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
+import static org.apache.commons.collections.MapUtils.isEmpty;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Getter
@@ -47,13 +51,52 @@ public class Player {
         return !inventory.isFull();
     }
 
-    //TODO: adapt so that if the inventory contains the items that it returns true
     public boolean canPay(Price price) {
-        if (price == null){
+        if (price == null || isEmpty(price.getItems())){
             return true;
         }
-        return false;
+        Map<ItemQualityRequirement, Integer> priceItems = price.getItems();
+        for (ItemQualityRequirement itemQualityRequirement : priceItems.keySet()) {
+            int amountOfQualityItems = amountOfMatchingItems(itemQualityRequirement);
+            int neededAmount = priceItems.get(itemQualityRequirement);
+            if (amountOfQualityItems < neededAmount){
+                return false;
+            }
+        }
+        return true;
     }
+
+    public void pay(Price price) {
+        if (price == null || isEmpty(price.getItems())){
+            return;
+        }
+        Map<ItemQualityRequirement, Integer> priceItems = price.getItems();
+        for (ItemQualityRequirement itemQualityRequirement : priceItems.keySet()) {
+            int requiredAmount = priceItems.get(itemQualityRequirement);
+            inventory.removeItems(itemQualityRequirement, requiredAmount);
+        }
+    }
+
+    private int amountOfMatchingItems(ItemQualityRequirement itemQualityRequirement) {
+        List<Item> inventoryItems = getInventoryItems();
+        if (isEmpty(inventoryItems)){
+            return 0;
+        }
+
+        ItemType itemType = itemQualityRequirement.getItemType();
+        int minQuality = itemQualityRequirement.getMinQuality();
+        int amount = 0;
+
+        for (Item item : inventoryItems) {
+            boolean sameType = itemType.equals(item.getType());
+            boolean goodQuality = item.getQuality() >= minQuality;
+            if (sameType && goodQuality){
+                amount += 1;
+            }
+        }
+        return amount;
+    }
+
 
     /**
      * Player searches around the feature and might find something.

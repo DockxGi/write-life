@@ -1,6 +1,7 @@
 package world.domain.item;
 
 import lombok.Getter;
+import world.domain.cost.ItemQualityRequirement;
 
 /**
  * An item is something that the player can take or drop in a room.
@@ -17,5 +18,12 @@ public class Item {
     public Item(ItemType type, Integer quality) {
         this.type = type;
         this.quality = quality;
+    }
+
+    public boolean matches(ItemQualityRequirement itemQualityRequirement) {
+        ItemType requiredType = itemQualityRequirement.getItemType();
+        int minQuality = itemQualityRequirement.getMinQuality();
+
+        return requiredType.equals(type) && quality >= minQuality;
     }
 }

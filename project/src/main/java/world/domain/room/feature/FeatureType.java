@@ -3,6 +3,7 @@ package world.domain.room.feature;
 import lombok.Getter;
 import world.domain.cost.Price;
 import world.domain.cost.PriceBuilder;
+import world.domain.item.ItemType;
 import world.domain.room.RoomType;
 
 import java.util.Arrays;
@@ -17,6 +18,9 @@ import static world.domain.room.RoomType.OUTDOOR;
 public enum FeatureType {
     ROCKS(1, OUTDOOR, null),
     WEATHER(1, OUTDOOR, null),
+    SAPLING(10, OUTDOOR, new PriceBuilder()
+            .item(ItemType.SAPLING,30, 1)
+            .build()),
     CAMPFIRE(1,OUTDOOR, new PriceBuilder()
             .item(STONE,1,5)
             .item(WOOD,1,1)

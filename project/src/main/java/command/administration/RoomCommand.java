@@ -1,5 +1,6 @@
 package command.administration;
 
+import character.player.persist.PlayerJsonFileRepository;
 import command.ArgumentCommand;
 import game.GameModel;
 import character.player.domain.Player;
@@ -76,8 +77,11 @@ public class RoomCommand extends ArgumentCommand {
         if (feature == null){
             System.out.println("[FEATURE CREATION FAILED]");
         }
+        player.pay(price);
         currentRoom.addFeature(feature);
+        PlayerJsonFileRepository.getInstance().save(player);
         WorldJsonFileRepository.getInstance().save(game.getWorld());
+        printEvent("PLAYER SAVED");
         showRoomChangedAndSaved();
     }
 
