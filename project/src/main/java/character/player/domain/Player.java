@@ -89,4 +89,11 @@ public class Player {
         Integer quality = feature.getQuality() == null ? nextInt(1,101) : feature.getQuality();
         return new Item(itemType, quality);
     }
+
+    public List<Item> getInventoryItems() {
+        if (inventory == null){
+            return null;
+        }
+        return inventory.getItems();
+    }
 }

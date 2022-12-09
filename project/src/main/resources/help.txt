@@ -19,8 +19,9 @@ BEGINNER TOPICS
 6. land
 7. move
 8. take
-9. drop
-10. wear
+9. inventory
+10. drop
+11. wear
 
 INTERMEDIATE TOPICS
 --------------------

@@ -1,0 +1,12 @@
+==================
+HELP -> INVENTORY
+==================
+Your inventory is the set of items that you take with you.
+It has a maximum capacity of 5 items.
+
+(to take items see: HELP TAKE)
+(to drop items see: HELP DROP)
+
+LOOKING AT YOUR INVENTORY
+--------------------------
+inventory
