@@ -69,9 +69,27 @@ public class Room {
         return this.exits.get(direction);
     }
 
-    //TODO: remove not supported features when room changes type
     public void changeType(RoomType roomType) {
         this.type = roomType;
+        removeNotSupportedFeatures();
+    }
+
+    /**
+     * Removes the not supported features from the room.
+     */
+    private void removeNotSupportedFeatures() {
+        if (!features.isEmpty()){
+            Iterator<Feature> iterator = features.iterator();
+            while (iterator.hasNext()){
+                Feature feature = iterator.next();
+                FeatureType type = feature.getType();
+                RoomType requiredRoomType = type.getRoomType();
+
+                if (requiredRoomType != null && !requiredRoomType.equals(this.type)){
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     private int countFeaturesOfType(FeatureType type){
