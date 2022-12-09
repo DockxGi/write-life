@@ -1,0 +1,22 @@
+=============
+HELP -> TAKE
+=============
+You can take items that are in your current room.
+Use the look-command (see: HELP LOOK) to see which items there are.
+An item you take will be put in your inventory.
+
+TAKE ITEM FROM ROOM
+--------------------
+take <itemName> (replace whitespaces with underscores: example Kings Dagger -> Kings_Dagger)
+take item <positionInListOfItems>
+
+Not all items have a name. When you look in the room then
+you will see a list of items. Before each item is a number.
+This is the positionInListOfItems.
+
+TAKE ALL ITEMS OF A TYPE
+-------------------------
+take all <itemType>> (do not use plural)
+
+Example: take all stone
+

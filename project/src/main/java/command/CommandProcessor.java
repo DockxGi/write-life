@@ -27,6 +27,7 @@ public class CommandProcessor {
         supportCommand(new MoveCommand());
         supportCommand(new FeatureCommand());
         supportCommand(new SearchCommand());
+        supportCommand(new TakeCommand());
     }
 
     private void supportCommand(Command command){

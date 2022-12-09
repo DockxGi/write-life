@@ -10,7 +10,6 @@ import world.domain.room.feature.FeatureType;
 
 import java.util.*;
 
-import static java.util.Collections.emptyList;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 public class Room {
@@ -142,5 +141,25 @@ public class Room {
 
     public void replaceTempItems(List<Item> items) {
         this.tempItems = items;
+    }
+
+    public Item getItemByName(String itemName) {
+        if (isEmpty(tempItems)){
+            return null;
+        }
+        return tempItems.stream()
+                .filter(item -> item.getName().equals(itemName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Item getItemByPosition(Integer position) {
+        if (isEmpty(tempItems)){
+            return null;
+        }
+        if (tempItems.size() < position){
+            return null;
+        }
+        return tempItems.get(position - 1);
     }
 }
