@@ -78,7 +78,8 @@ public class Player {
         boolean itemFound = d100result <= chance.getChance();
 
         if (itemFound){
-            return createFoundItem(feature, chance);
+            Item foundItem = createFoundItem(feature, chance);
+            return foundItem;
         }
         return null;
     }

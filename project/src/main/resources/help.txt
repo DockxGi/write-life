@@ -25,6 +25,7 @@ BEGINNER TOPICS
 
 INTERMEDIATE TOPICS
 --------------------
+1. world-building
 
 LIST OF POSSIBLE TOPICS
 ------------------------

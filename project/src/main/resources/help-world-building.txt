@@ -1,0 +1,31 @@
+=======================
+HELP -> WORLD BUILDING
+=======================
+Creating a new world is who whole process.
+You have to use your imagination to create a world, with rooms, items and features that all
+fit in the same theme. And not all things are given to you for free.
+This help file provides a way to get started (for when you start witch absolutely nothing).
+
+PHASE 1: A NEW WORLD WITH ROOMS AND EXITS
+------------------------------------------
+
+STEP 1: create a new world (see: HELP WORLD)
+STEP 2: create your player (see: HELP PLAYER)
+STEP 3: enter the world (see: HELP WORLD)
+STEP 4: create rooms (see: HELP ROOM)
+STEP 5: use exits to connect rooms (see: HELP ROOM)
+
+Remark: Keep in mind that an exit is a one way connection from one room to another.
+Remark: You can do crazy things with exits. Use your imagination.
+
+PHASE 2: ADD FREE FEATURES TO ROOMS
+------------------------------------
+see: HELP FEATURE
+
+You need features to make your world feel more alive.
+The free features allow you to already add objects to your world from which you can take
+the primary items from which you can build new (non-free) features and items.
+
+STEP 1: add some rocks in outdoor rooms
+STEP 2: add weather to outdoor rooms
+

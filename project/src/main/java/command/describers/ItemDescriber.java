@@ -22,7 +22,7 @@ public class ItemDescriber implements Describer<Item> {
         for (int i = 0; i < objects.size(); i++){
             Item object = objects.get(i);
             String itemDescription = describe(object, levelOfDetail);
-            sb.append(String.format("%d. %s", i + 1, itemDescription));
+            sb.append(String.format("%d. %s\n", i + 1, itemDescription));
         }
         return sb.toString();
     }

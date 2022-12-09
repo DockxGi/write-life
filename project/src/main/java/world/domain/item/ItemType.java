@@ -8,6 +8,7 @@ import static world.domain.item.ZeroQualityEffect.DESTROYED;
  */
 public enum ItemType {
     STONE(DESTROYED),
+    SAPLING(DESTROYED),
     WOOD(BROKEN);
     private ZeroQualityEffect zeroQualityEffect;
 
