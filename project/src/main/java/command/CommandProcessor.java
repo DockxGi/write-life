@@ -29,6 +29,7 @@ public class CommandProcessor {
         supportCommand(new SearchCommand());
         supportCommand(new TakeCommand());
         supportCommand(new InventoryCommand());
+        supportCommand(new DropCommand());
     }
 
     private void supportCommand(Command command){

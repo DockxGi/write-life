@@ -212,4 +212,11 @@ public class Room {
             }
         }
     }
+
+    public void addItemTemporarily(Item item) {
+        if (tempItems == null){
+            tempItems = new ArrayList<>();
+        }
+        tempItems.add(item);
+    }
 }

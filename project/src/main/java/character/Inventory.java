@@ -1,9 +1,9 @@
 package character;
 
 import lombok.Getter;
+import org.apache.commons.collections.CollectionUtils;
 import world.domain.cost.ItemQualityRequirement;
 import world.domain.item.Item;
-import world.domain.item.ItemType;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,4 +46,38 @@ public class Inventory {
         }
     }
 
+    public boolean isEmpty() {
+        return CollectionUtils.isEmpty(items);
+    }
+
+    public Item getItemByPosition(Integer position) {
+        if (isEmpty() || items.size() < position - 1){
+            return null;
+        }
+        return items.get(position - 1);
+    }
+
+    public Item getItemByName(String argument) {
+        if (isEmpty()){
+            return null;
+        }
+        return items.stream()
+                .filter(item -> argument.equals(item.getName()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void removeItem(Item toRemove) {
+        if (isEmpty()){
+            return;
+        }
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext()){
+            Item item = iterator.next();
+            if (toRemove.equals(item)){
+                iterator.remove();
+                return;
+            }
+        }
+    }
 }

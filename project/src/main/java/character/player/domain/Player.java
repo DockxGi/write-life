@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.apache.commons.collections.CollectionUtils.addAll;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static org.apache.commons.collections.MapUtils.isEmpty;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
@@ -135,5 +134,20 @@ public class Player {
             return null;
         }
         return inventory.getItems();
+    }
+
+    public Item getItemByPosition(Integer numericPosition) {
+        if (inventory == null || inventory.isEmpty()){
+            return null;
+        }
+        return inventory.getItemByPosition(numericPosition);
+    }
+
+    public Item getItemByName(String argument) {
+        return inventory.getItemByName(argument);
+    }
+
+    public void removeItem(Item item) {
+        inventory.removeItem(item);
     }
 }

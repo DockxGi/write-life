@@ -45,7 +45,7 @@ public class TakeCommand extends ArgumentCommand {
         Item item = currentRoom.getItemByPosition(numericPosition);
 
         if (item == null){
-            System.out.println(String.format("There is no item at position %d.", position));
+            System.out.printf("There is no item at position %s.%n", position);
             return;
         }
         takeItem(game, item);
@@ -58,7 +58,7 @@ public class TakeCommand extends ArgumentCommand {
         Item item = currentRoom.getItemByName(itemName);
 
         if (item == null){
-            System.out.println(String.format("No item found with name %s.", itemName));
+            System.out.printf("No item found with name %s.%n", itemName);
             return;
         }
         takeItem(game, item);

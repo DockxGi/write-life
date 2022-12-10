@@ -2,6 +2,8 @@
 HELP -> TAKE
 =============
 You can drop items in your current room.
+Dropped items will be placed in the room temporarily.
+They can disappear from the game at any moment.
 
 DROP ITEM IN ROOM
 ------------------
