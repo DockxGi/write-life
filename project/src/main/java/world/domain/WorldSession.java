@@ -2,6 +2,7 @@ package world.domain;
 
 import lombok.Getter;
 import character.player.domain.Player;
+import world.domain.events.TreesGrow;
 import world.domain.events.WeatherChanges;
 import world.domain.room.Room;
 import world.domain.room.RoomType;
@@ -31,6 +32,9 @@ public class WorldSession {
     private void addTimeCycleEvents() {
         WeatherChanges weatherChanges = new WeatherChanges(world);
         timeCycle.addEvent(weatherChanges);
+
+        TreesGrow treesGrow = new TreesGrow(world);
+        timeCycle.addEvent(treesGrow);
     }
 
     public void landInRoom(Room room) {

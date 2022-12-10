@@ -1,7 +1,6 @@
 package world.domain.room;
 
 import lombok.Getter;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import world.domain.Direction;
 import world.domain.item.Item;
@@ -187,5 +186,24 @@ public class Room {
         }
         return features.stream()
                 .anyMatch(feature -> feature.getType().equals(type));
+    }
+
+    public void replaceAllFeaturesOfType(FeatureType toReplace, FeatureType replacement) {
+        for (Feature feature : features) {
+            if (toReplace.equals(feature.getType())){
+                feature.setType(replacement);
+            }
+        }
+    }
+
+    public void removeItem(Item toRemove) {
+        Iterator<Item> iterator = tempItems.iterator();
+        while (iterator.hasNext()){
+            Item item = iterator.next();
+            if (toRemove.equals(item)){
+                iterator.remove();
+                return;
+            }
+        }
     }
 }

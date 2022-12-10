@@ -1,15 +1,13 @@
 package world.domain.events;
 
+import lombok.AllArgsConstructor;
 import world.domain.World;
 import world.domain.time.CycledEvent;
 
+@AllArgsConstructor
 public class WeatherChanges implements CycledEvent {
 
     private World world;
-
-    public WeatherChanges(World world) {
-        this.world = world;
-    }
 
     @Override
     public void onNewCycle() {

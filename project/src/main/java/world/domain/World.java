@@ -1,7 +1,7 @@
 package world.domain;
 
-import org.apache.commons.lang3.RandomUtils;
 import world.domain.room.Room;
+import world.domain.room.feature.FeatureType;
 import world.domain.weather.WeatherType;
 
 import java.util.HashSet;
@@ -87,5 +87,11 @@ public class World {
 
     public WeatherType getWeatherType() {
         return weatherType;
+    }
+
+    public void replaceAllFeaturesOfType(FeatureType toReplace, FeatureType replacement) {
+        for (Room room : rooms) {
+            room.replaceAllFeaturesOfType(toReplace, replacement);
+        }
     }
 }

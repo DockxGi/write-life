@@ -71,6 +71,7 @@ public class TakeCommand extends ArgumentCommand {
             return;
         }
         player.takeItem(item);
+        game.getCurrentRoom().removeItem(item);
         printEvent("ITEM ADDED TO INVENTORY");
     }
 }
