@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.apache.commons.collections.CollectionUtils.addAll;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static org.apache.commons.collections.MapUtils.isEmpty;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
@@ -83,14 +84,9 @@ public class Player {
             return 0;
         }
 
-        ItemType itemType = itemQualityRequirement.getItemType();
-        int minQuality = itemQualityRequirement.getMinQuality();
         int amount = 0;
-
         for (Item item : inventoryItems) {
-            boolean sameType = itemType.equals(item.getType());
-            boolean goodQuality = item.getQuality() >= minQuality;
-            if (sameType && goodQuality){
+            if (item.matches(itemQualityRequirement)){
                 amount += 1;
             }
         }
