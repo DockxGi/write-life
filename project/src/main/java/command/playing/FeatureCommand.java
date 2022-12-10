@@ -30,18 +30,35 @@ public class FeatureCommand extends ArgumentCommand {
 
     private void processFeatureListCommand(String[] splitted) {
         if (splitted.length < 3){
-            showFeatureTypes(null);
+            showFeatureTypesOfRoomType(null);
             return;
         }
         String argument = splitted[2];
-        RoomType type = RoomType.fromName(argument);
-        showFeatureTypes(type);
+        if (argument.equals("free")){
+            showFeatureTypesByFree(true);
+        } else if (argument.equals("non-free")){
+            showFeatureTypesByFree(false);
+        } else {
+            RoomType type = RoomType.fromName(argument);
+            showFeatureTypesOfRoomType(type);
+        }
     }
 
-    private void showFeatureTypes(RoomType filter) {
-        //todo: allow filtering on free vs non-free
-        List<FeatureType> featureTypes = FeatureType.getAllForRoomType(filter);
+    /**
+     * If the free parameter is true then this shows the free featureTypes.
+     * Otherwise, the non-free featureTypes are shown.
+     */
+    private void showFeatureTypesByFree(boolean free) {
+        List<FeatureType> featureTypes = FeatureType.getAllByFree(free);
+        showFeatureTypes(featureTypes);
+    }
 
+    private void showFeatureTypesOfRoomType(RoomType filter) {
+        List<FeatureType> featureTypes = FeatureType.getAllForRoomType(filter);
+        showFeatureTypes(featureTypes);
+    }
+
+    private void showFeatureTypes(List<FeatureType> featureTypes) {
         for (FeatureType featureType : featureTypes) {
             printFeatureType(featureType);
         }

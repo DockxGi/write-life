@@ -70,4 +70,18 @@ public enum FeatureType {
                 .filter(featureType -> featureType.roomType == null || featureType.roomType.equals(filter))
                 .collect(toList());
     }
+
+    /**
+     * If free parameter is true then this returns all free FeatureTypes.
+     * Otherwise, this returns all non-free featureTypes.
+     */
+    public static List<FeatureType> getAllByFree(boolean free) {
+        return stream(values())
+                .filter(featureType -> featureType.isFree() == free)
+                .collect(toList());
+    }
+
+    private boolean isFree() {
+        return price == null;
+    }
 }
