@@ -9,7 +9,14 @@ import static world.domain.item.ZeroQualityEffect.DESTROYED;
 public enum ItemType {
     STONE(DESTROYED),
     SAPLING(DESTROYED),
-    WOOD(BROKEN);
+    WOOD(BROKEN),
+    SEEDS(DESTROYED),
+    RED_FLOWER(DESTROYED),
+    BLUE_FLOWER(DESTROYED),
+    YELLOW_FLOWER(DESTROYED),
+    WHITE_FLOWER(DESTROYED),
+    GOD_POWER(DESTROYED) //not for mortals
+    ;
     private ZeroQualityEffect zeroQualityEffect;
 
     ItemType(ZeroQualityEffect effect) {

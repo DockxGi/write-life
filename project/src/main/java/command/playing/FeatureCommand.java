@@ -39,6 +39,7 @@ public class FeatureCommand extends ArgumentCommand {
     }
 
     private void showFeatureTypes(RoomType filter) {
+        //todo: allow filtering on free vs non-free
         List<FeatureType> featureTypes = FeatureType.getAllForRoomType(filter);
 
         for (FeatureType featureType : featureTypes) {

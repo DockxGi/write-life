@@ -11,18 +11,28 @@ import java.util.List;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
-import static world.domain.item.ItemType.STONE;
-import static world.domain.item.ItemType.WOOD;
+import static world.domain.item.ItemType.*;
 import static world.domain.room.RoomType.OUTDOOR;
 
 public enum FeatureType {
     ROCKS(1, OUTDOOR, null),
+    MEADOW(1,OUTDOOR, new PriceBuilder()
+            .item(SEEDS, 1,5)
+            .build()),
     WEATHER(1, OUTDOOR, null),
     SAPLING(10, OUTDOOR, new PriceBuilder()
             .item(ItemType.SAPLING,30, 1)
+            .build()), //grows to tree
+    TREE(10, OUTDOOR, new PriceBuilder()
+            .item(GOD_POWER, 1,1).build()),
+    SAPLINGS(1, OUTDOOR, new PriceBuilder()
+            .item(ItemType.SAPLING,20, 5)
+            .build()), //grows to trees
+    TREES(1, OUTDOOR, new PriceBuilder()
+            .item(GOD_POWER,1, 2)
             .build()),
     CAMPFIRE(1,OUTDOOR, new PriceBuilder()
-            .item(STONE,1,5)
+            .item(STONE,1,4)
             .item(WOOD,1,1)
             .build())
     ;
