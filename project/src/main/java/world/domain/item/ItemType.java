@@ -15,6 +15,8 @@ public enum ItemType {
     BLUE_FLOWER(DESTROYED),
     YELLOW_FLOWER(DESTROYED),
     WHITE_FLOWER(DESTROYED),
+    BRANCH(BROKEN),
+    MUSHROOM(BROKEN),
     GOD_POWER(DESTROYED) //not for mortals
     ;
     private ZeroQualityEffect zeroQualityEffect;
