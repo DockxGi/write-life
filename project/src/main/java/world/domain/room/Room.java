@@ -189,6 +189,9 @@ public class Room {
     }
 
     public void replaceAllFeaturesOfType(FeatureType toReplace, FeatureType replacement) {
+        if (this.features == null){
+            return;
+        }
         for (Feature feature : features) {
             if (toReplace.equals(feature.getType())){
                 feature.setType(replacement);
@@ -197,6 +200,9 @@ public class Room {
     }
 
     public void removeItem(Item toRemove) {
+        if (tempItems == null){
+            return;
+        }
         Iterator<Item> iterator = tempItems.iterator();
         while (iterator.hasNext()){
             Item item = iterator.next();
