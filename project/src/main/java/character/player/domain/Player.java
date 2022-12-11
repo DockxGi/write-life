@@ -66,15 +66,21 @@ public class Player {
         return true;
     }
 
-    public void pay(Price price) {
+    /**
+     * Player pays the price. The method returns the entire list of qualities of these items, including null values.
+     */
+    public List<Integer> pay(Price price) {
+        List<Integer> qualitiesOfItems = new ArrayList<>();
         if (price == null || isEmpty(price.getItems())){
-            return;
+            return qualitiesOfItems;
         }
         Map<ItemQualityRequirement, Integer> priceItems = price.getItems();
         for (ItemQualityRequirement itemQualityRequirement : priceItems.keySet()) {
             int requiredAmount = priceItems.get(itemQualityRequirement);
-            inventory.removeItems(itemQualityRequirement, requiredAmount);
+            List<Integer> newQualities = inventory.removeItems(itemQualityRequirement, requiredAmount);
+            qualitiesOfItems.addAll(newQualities);
         }
+        return qualitiesOfItems;
     }
 
     private int amountOfMatchingItems(ItemQualityRequirement itemQualityRequirement) {

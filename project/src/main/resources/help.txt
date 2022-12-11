@@ -21,7 +21,8 @@ BEGINNER TOPICS
 8. take
 9. inventory
 10. drop
-11. wear
+11. craft
+12. wear
 
 INTERMEDIATE TOPICS
 --------------------

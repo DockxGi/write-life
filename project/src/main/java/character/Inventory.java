@@ -33,17 +33,23 @@ public class Inventory {
         return items.add(item);
     }
 
-    public void removeItems(ItemQualityRequirement itemQualityRequirement, int requiredAmount) {
+    /**
+     * Removes items from the inventory and returns the list of qualities of those items, including null values.
+     */
+    public List<Integer> removeItems(ItemQualityRequirement itemQualityRequirement, int requiredAmount) {
         Iterator<Item> iterator = items.iterator();
         int amountRemoved = 0;
+        List<Integer> qualities = new ArrayList<>();
         while (iterator.hasNext() && amountRemoved < requiredAmount){
             Item item = iterator.next();
             boolean matches = item.matches(itemQualityRequirement);
             if (matches){
                 amountRemoved += 1;
+                qualities.add(item.getQuality());
                 iterator.remove();
             }
         }
+        return qualities;
     }
 
     public boolean isEmpty() {

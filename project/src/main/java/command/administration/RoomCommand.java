@@ -1,9 +1,10 @@
 package command.administration;
 
+import character.player.domain.Player;
 import character.player.persist.PlayerJsonFileRepository;
 import command.ArgumentCommand;
 import game.GameModel;
-import character.player.domain.Player;
+import org.apache.commons.collections.CollectionUtils;
 import world.domain.World;
 import world.domain.cost.Price;
 import world.domain.room.Exit;
@@ -14,7 +15,10 @@ import world.domain.room.feature.FeatureType;
 import world.persist.WorldJsonFileRepository;
 import world.view.RoomMenus;
 
+import java.util.List;
+
 import static utils.PrintLineUtil.printEvent;
+import static utils.StatisticsUtil.average;
 
 public class RoomCommand extends ArgumentCommand {
 
@@ -73,16 +77,27 @@ public class RoomCommand extends ArgumentCommand {
             System.out.println("You can not add this type of feature to the room.");
             return;
         }
+        //feature has quality null here
         Feature feature = roomMenus.showAddFeatureMenu(game.getCurrentRoom(), type);
         if (feature == null){
             System.out.println("[FEATURE CREATION FAILED]");
         }
-        player.pay(price);
+        //when player pays then the average quality is used for the quality of the created feature
+        List<Integer> qualitiesOfItems = player.pay(price);
+        int averageQuality = calculateQualityForNewFeature(qualitiesOfItems);
+        feature.setQuality(averageQuality);
         currentRoom.addFeature(feature);
         PlayerJsonFileRepository.getInstance().save(player);
         WorldJsonFileRepository.getInstance().save(game.getWorld());
         printEvent("PLAYER SAVED");
         showRoomChangedAndSaved();
+    }
+
+    private int calculateQualityForNewFeature(List<Integer> qualitiesOfItems) {
+        if (CollectionUtils.isEmpty(qualitiesOfItems)){
+            return 100;
+        }
+        return average(qualitiesOfItems, 100);
     }
 
     private void processRoomTypeCommand(String[] splitted, GameModel game) {

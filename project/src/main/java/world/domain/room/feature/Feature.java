@@ -12,5 +12,6 @@ public class Feature {
     @Setter
     private FeatureType type;
     @Getter
+    @Setter
     private Integer quality; //percentage (value between 1 and 100), null means that feature does not decay
 }
