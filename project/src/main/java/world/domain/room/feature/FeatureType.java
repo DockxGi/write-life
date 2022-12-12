@@ -19,17 +19,25 @@ public enum FeatureType {
     MEADOW(1,OUTDOOR, new PriceBuilder()
             .item(SEEDS, 1,5)
             .build()),
+    BARREN_LAND(1, OUTDOOR, new PriceBuilder()
+            .item(GOD_POWER, 1,1).build()),
     WEATHER(1, OUTDOOR, null),
     SAPLING(10, OUTDOOR, new PriceBuilder()
             .item(ItemType.SAPLING,30, 1)
             .build()), //grows to tree
     TREE(10, OUTDOOR, new PriceBuilder()
             .item(GOD_POWER, 1,1).build()),
+    DEAD_TREE(10, OUTDOOR, new PriceBuilder()
+            .item(GOD_POWER,1,1)
+            .build()),
     SAPLINGS(1, OUTDOOR, new PriceBuilder()
             .item(ItemType.SAPLING,20, 5)
             .build()), //grows to trees
     TREES(1, OUTDOOR, new PriceBuilder()
             .item(GOD_POWER,1, 2)
+            .build()),
+    DEAD_TREES(1, OUTDOOR, new PriceBuilder()
+            .item(GOD_POWER,1,1)
             .build()),
     CAMPFIRE(1,OUTDOOR, new PriceBuilder()
             .item(STONE,1,4)

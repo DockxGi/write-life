@@ -6,6 +6,8 @@ import org.apache.commons.lang3.RandomUtils;
 import world.domain.Direction;
 import world.domain.item.Item;
 import world.domain.room.feature.Feature;
+import world.domain.room.feature.FeatureBrokenTransition;
+import world.domain.room.feature.FeatureBrokenTransitionMapping;
 import world.domain.room.feature.FeatureType;
 
 import java.util.*;
@@ -251,7 +253,32 @@ public class Room {
 
     private Integer onFeatureUsed(Feature feature) {
         feature.damage();
+        if (feature.isBroken()){
+            executeFeatureBrokenTransition(feature);
+        }
         return feature.getQuality();
+    }
+
+    private void executeFeatureBrokenTransition(Feature feature) {
+        FeatureBrokenTransitionMapping mapping = new FeatureBrokenTransitionMapping();
+        FeatureBrokenTransition transition = mapping.transitionUponBroken(feature.getType());
+        if (transition == null){
+            this.removeFeature(feature);
+        } else {
+            feature.setType(transition.getFeatureType());
+            feature.setQuality(transition.getQuality());
+        }
+    }
+
+    private void removeFeature(Feature toRemove) {
+        Iterator<Feature> iterator = features.iterator();
+        while (iterator.hasNext()){
+            Feature feature = iterator.next();
+            if (feature.equals(toRemove)){
+                iterator.remove();
+                return;
+            }
+        }
     }
 
     /**
