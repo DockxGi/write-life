@@ -270,7 +270,7 @@ public class Room {
         }
     }
 
-    private void removeFeature(Feature toRemove) {
+    public void removeFeature(Feature toRemove) {
         Iterator<Feature> iterator = features.iterator();
         while (iterator.hasNext()){
             Feature feature = iterator.next();

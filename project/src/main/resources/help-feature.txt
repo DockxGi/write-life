@@ -39,6 +39,13 @@ Remark: use "feature list" to see the possible values
 
 SEARCHING A FEATURE
 --------------------
-search <featureName>
+search <featureName> (replace whitespace with underscores in the featureName)
 
 see: HELP SEARCH
+
+REMOVING FEATURE FROM A ROOM
+-----------------------------
+room remove-feature <featureName>
+
+Remark: when features are damaged and get broken then they are
+removed or transitioned to another feature type

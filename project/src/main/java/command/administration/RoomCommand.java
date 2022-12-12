@@ -52,7 +52,26 @@ public class RoomCommand extends ArgumentCommand {
             processRoomTypeCommand(splitted, game);
         } else if (argument.equals("add-feature")){
             processAddFeatureCommand(splitted, game);
+        } else if (argument.equals("remove-feature")){
+            processRemoveFeatureCommand(splitted, game);
         }
+    }
+
+    private void processRemoveFeatureCommand(String[] splitted, GameModel game) {
+        if (splitted.length < 3){
+            System.out.println("You have to specify the name of the feature you want to remove. See: HELP FEATURE");
+            return;
+        }
+        String argument = splitted[2].replace("_", " ");
+        Room currentRoom = game.getCurrentRoom();
+        Feature feature = currentRoom.featureWithName(argument);
+        if (feature == null){
+            System.out.println("There is no feature with the name " + argument + " in the room.");
+            return;
+        }
+        currentRoom.removeFeature(feature);
+        WorldJsonFileRepository.getInstance().save(game.getWorld());
+        showRoomChangedAndSaved();
     }
 
     private void processAddFeatureCommand(String[] splitted, GameModel game) {
