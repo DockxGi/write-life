@@ -9,6 +9,7 @@ LISTS OF CRAFTING RECIPES
 -------------------------
 craft-book (for seeing the recipes that are not related to a specific theme)
 craft-book <theme>
+craft-book <theme> detailed (gives more detail, use none for seeing recipes not related to a theme)
 
 CRAFTING AN ITEM
 -----------------

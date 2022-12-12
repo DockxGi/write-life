@@ -1,5 +1,6 @@
 package command.describers;
 
+import org.apache.commons.collections.CollectionUtils;
 import world.domain.item.ItemType;
 import world.domain.room.crafting.Recipe;
 import world.domain.room.feature.FeatureType;
@@ -20,12 +21,15 @@ public class RecipeDescriber implements Describer<Recipe> {
         }
         String cost = recipeCost(recipe, levelOfDetail);
         String requiredFeatures = recipeFeatures(recipe);
-        return recipeName + ": " + cost;
+        return recipeName + ": " + cost + " " + requiredFeatures;
     }
 
     private String recipeFeatures(Recipe recipe) {
         FeatureTypeDescriber featureTypeDescriber = new FeatureTypeDescriber();
         List<FeatureType> requiredFeatures = recipe.getRequiredFeatures();
+        if (CollectionUtils.isEmpty(requiredFeatures)){
+            return "needs no features";
+        }
         return "needs features " + featureTypeDescriber.describeList(requiredFeatures, LOW);
     }
 
