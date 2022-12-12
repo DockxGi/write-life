@@ -30,6 +30,7 @@ public class CommandProcessor {
         supportCommand(new TakeCommand());
         supportCommand(new InventoryCommand());
         supportCommand(new DropCommand());
+        supportCommand(new CraftBookCommand());
     }
 
     private void supportCommand(Command command){

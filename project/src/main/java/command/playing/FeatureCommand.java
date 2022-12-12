@@ -1,15 +1,16 @@
 package command.playing;
 
 import command.ArgumentCommand;
+import command.describers.PriceDescriber;
 import game.GameModel;
-import world.domain.cost.ItemQualityRequirement;
 import world.domain.cost.Price;
 import world.domain.room.RoomType;
 import world.domain.room.feature.FeatureType;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
+
+import static command.describers.LevelOfDetail.MEDIUM;
 
 public class FeatureCommand extends ArgumentCommand {
     @Override
@@ -74,21 +75,10 @@ public class FeatureCommand extends ArgumentCommand {
             System.out.println(sb);
             return;
         }
-        String priceDescription = describePrice(price);
+        PriceDescriber priceDescriber = new PriceDescriber();
+        String priceDescription = priceDescriber.describe(price, MEDIUM);
         sb.append(priceDescription);
         System.out.println(sb);
-    }
-
-    private String describePrice(Price price){
-        StringBuilder sb = new StringBuilder("cost: ");
-        Map<ItemQualityRequirement, Integer> items = price.getItems();
-        for (ItemQualityRequirement itemQualityRequirement : items.keySet()) {
-            String itemType = itemQualityRequirement.getItemType().name().toLowerCase(Locale.ROOT);
-            int minQuality = itemQualityRequirement.getMinQuality();
-            Integer quantity = items.get(itemQualityRequirement);
-            sb.append(String.format("[%s, Amount %d, Quality >= %d]", itemType, quantity, minQuality));
-        }
-        return sb.toString();
     }
 
 }

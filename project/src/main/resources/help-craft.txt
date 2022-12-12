@@ -3,15 +3,15 @@ HELP -> CRAFT
 ==============
 Crafting allows you to turn items into other items, in many cases with the help of a feature.
 It happens based on a recipe with: required items, required feature(s) and the resulting items.
+The recipes are grouped in craft-books. Each craft-book contains the recipe's for a specific theme.
 
-LIST OF CRAFTING RECIPES
+LISTS OF CRAFTING RECIPES
 -------------------------
-craft list <featureType> (to see the recipe's for a specific type of feature)
-craft list without-feature (to see the recipe's that have no required feature)
+craft-book (for seeing the recipes that are not related to a specific theme)
+craft-book <theme>
 
 CRAFTING AN ITEM
 -----------------
-craft <itemToCraft> (if you do not need to use a feature)
-craft <itemToCraft> with <featureName> (if you need to use a feature)
+craft <itemToCraft>
 
-Remark: crafting can damage features
+Remark: crafting can damage the feature you use

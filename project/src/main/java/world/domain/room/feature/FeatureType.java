@@ -33,8 +33,11 @@ public enum FeatureType {
             .build()),
     CAMPFIRE(1,OUTDOOR, new PriceBuilder()
             .item(STONE,1,4)
-            .item(WOOD,1,1)
-            .build())
+            .item(BRANCH,1,1)
+            .build()),
+    PIT(1, OUTDOOR, new PriceBuilder()
+            .item(SHOVEL, 1,1)
+            .build()),
     ;
 
     FeatureType(int maxInRoom, RoomType roomType, Price price) {
