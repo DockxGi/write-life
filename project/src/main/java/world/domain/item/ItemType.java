@@ -27,4 +27,14 @@ public enum ItemType {
     ItemType(ZeroQualityEffect effect) {
         this.zeroQualityEffect = effect;
     }
+
+    public static ItemType fromName(String itemType) {
+        ItemType[] values = values();
+        for (ItemType value : values) {
+            if (value.name().equalsIgnoreCase(itemType)){
+                return value;
+            }
+        }
+        return null;
+    }
 }

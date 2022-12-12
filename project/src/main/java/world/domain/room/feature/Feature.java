@@ -14,4 +14,21 @@ public class Feature {
     @Getter
     @Setter
     private Integer quality; //percentage (value between 1 and 100), null means that feature does not decay
+
+    /**
+     * Damages the feature if it can be damaged.
+     */
+    public void damage() {
+        if (quality == null){
+            return;
+        }
+        quality = quality - 1;
+    }
+
+    public boolean isBroken(){
+        if (quality == null){
+            return false;
+        }
+        return quality == 0;
+    }
 }

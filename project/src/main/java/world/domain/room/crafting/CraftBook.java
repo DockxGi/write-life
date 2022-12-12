@@ -2,6 +2,7 @@ package world.domain.room.crafting;
 
 import lombok.Getter;
 import world.domain.Theme;
+import world.domain.item.ItemType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +23,17 @@ public class CraftBook {
 
     public void addRecipe(Recipe recipe){
         this.recipes.add(recipe);
+    }
+
+    /**
+     * Returns the first Recipe that has the itemType in the result.
+     */
+    public Recipe findRecipeForItemType(ItemType itemType) {
+        for (Recipe recipe : recipes) {
+            if (recipe.getResult().contains(itemType)){
+                return recipe;
+            }
+        }
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package world.domain.room;
 
 import lombok.Getter;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.RandomUtils;
 import world.domain.Direction;
 import world.domain.item.Item;
 import world.domain.room.feature.Feature;
@@ -218,5 +219,63 @@ public class Room {
             tempItems = new ArrayList<>();
         }
         tempItems.add(item);
+    }
+
+    public boolean hasFeatureTypes(List<FeatureType> requiredFeatures) {
+        if (isEmpty(requiredFeatures)){
+            return true;
+        }
+        for (FeatureType requiredFeature : requiredFeatures) {
+            if (!hasFeatureOfType(requiredFeature)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Should be triggered when something or someone is using features of the room.
+     * It returns the list of qualities of the features.
+     */
+    public List<Integer> onFeaturesUsed(List<FeatureType> featureTypes) {
+        List<Integer> qualities = new ArrayList<>();
+        for (FeatureType featureType : featureTypes) {
+            Feature feature = findRandomFeatureOfType(featureType);
+            if (feature != null){
+                Integer quality = onFeatureUsed(feature);
+                qualities.add(quality);
+            }
+        }
+        return qualities;
+    }
+
+    private Integer onFeatureUsed(Feature feature) {
+        feature.damage();
+        return feature.getQuality();
+    }
+
+    /**
+     * Searches for all features of the given Type and then picks a random one to return.
+     */
+    public Feature findRandomFeatureOfType(FeatureType featureType){
+        List<Feature> featuresOfType = findFeaturesOfType(featureType);
+        if (isEmpty(featuresOfType)){
+            return null;
+        }
+        if (featuresOfType.size() == 1){
+            return featuresOfType.get(0);
+        }
+        int i = RandomUtils.nextInt(0, featuresOfType.size());
+        return featuresOfType.get(i);
+    }
+
+    public List<Feature> findFeaturesOfType(FeatureType featureType){
+        List<Feature> featuresOfType = new ArrayList<>();
+        for (Feature feature : this.features) {
+            if (feature.getType().equals(featureType)){
+                featuresOfType.add(feature);
+            }
+        }
+        return featuresOfType;
     }
 }

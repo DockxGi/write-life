@@ -13,6 +13,6 @@ craft-book <theme> detailed (gives more detail, use none for seeing recipes not 
 
 CRAFTING AN ITEM
 -----------------
-craft <itemToCraft>
+craft <theme> <itemToCraft> (fill in value none for the theme if what you craft is not related to a theme)
 
 Remark: crafting can damage the feature you use
