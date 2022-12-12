@@ -30,8 +30,38 @@ public class CraftingLibrary {
         craftBook.addRecipe(shovelRecipe());
         craftBook.addRecipe(axeRecipe());
         craftBook.addRecipe(woodRecipe());
+        craftBook.addRecipe(leavesSkirtRecipe());
+        craftBook.addRecipe(leavesBikiniTopRecipe());
+        craftBook.addRecipe(leavesTrousersRecipe());
 
         return craftBook;
+    }
+
+    private Recipe leavesTrousersRecipe() {
+        Price price = new PriceBuilder()
+                .item(LEAVES, 5, 4)
+                .build();
+        Recipe recipe = new Recipe(price);
+        recipe.addToResult(LEAVES_TROUSERS);
+        return recipe;
+    }
+
+    private Recipe leavesBikiniTopRecipe() {
+        Price price = new PriceBuilder()
+                .item(LEAVES, 5, 2)
+                .build();
+        Recipe recipe = new Recipe(price);
+        recipe.addToResult(LEAVES_BIKINI_TOP);
+        return recipe;
+    }
+
+    private Recipe leavesSkirtRecipe() {
+        Price price = new PriceBuilder()
+                .item(LEAVES, 5, 2)
+                .build();
+        Recipe recipe = new Recipe(price);
+        recipe.addToResult(LEAVES_SKIRT);
+        return recipe;
     }
 
     private Recipe shovelRecipe() {

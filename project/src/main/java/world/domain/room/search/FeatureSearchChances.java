@@ -35,13 +35,15 @@ public class FeatureSearchChances {
         SearchChance saplingSearchChance = new SearchChance(80, ItemType.SAPLING);
         SearchChance mushroomSearchChance = new SearchChance(20, MUSHROOM);
         SearchChance seedsChance = new SearchChance(50, SEEDS);
-        return List.of(branchSearchChance, saplingSearchChance, mushroomSearchChance, seedsChance);
+        SearchChance leavesSearchChance = new SearchChance(100, LEAVES);
+        return List.of(branchSearchChance, saplingSearchChance, mushroomSearchChance, seedsChance, leavesSearchChance);
     }
 
     private static List<SearchChance> createSearchChancesForTree() {
         SearchChance branchSearchChance = new SearchChance(90, BRANCH);
         SearchChance saplingSearchChance = new SearchChance(2, ItemType.SAPLING);
-        return List.of(branchSearchChance, saplingSearchChance);
+        SearchChance leavesSearchChance = new SearchChance(50, LEAVES);
+        return List.of(branchSearchChance, saplingSearchChance, leavesSearchChance);
     }
 
     private static List<SearchChance> createSearchChancesForMeadow() {

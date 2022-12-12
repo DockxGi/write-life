@@ -11,6 +11,7 @@ public enum ItemType {
     SAPLING(DESTROYED),
     WOOD(BROKEN),
     SEEDS(DESTROYED),
+    LEAVES(DESTROYED),
     RED_FLOWER(DESTROYED),
     BLUE_FLOWER(DESTROYED),
     YELLOW_FLOWER(DESTROYED),
@@ -20,6 +21,9 @@ public enum ItemType {
     SHOVEL(BROKEN),
     AXE(BROKEN),
     PICKAXE(BROKEN),
+    LEAVES_SKIRT(BROKEN),
+    LEAVES_BIKINI_TOP(BROKEN),
+    LEAVES_TROUSERS(BROKEN),
     GOD_POWER(DESTROYED) //not for mortals
     ;
     private ZeroQualityEffect zeroQualityEffect;
