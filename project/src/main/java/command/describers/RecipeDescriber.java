@@ -51,7 +51,10 @@ public class RecipeDescriber implements Describer<Recipe> {
         for (int i = 0; i < recipes.size(); i++) {
             Recipe recipe = recipes.get(i);
             String recipeDescription = describe(recipe, levelOfDetail);
-            sb.append(String.format("%d. %s\n", i+1, recipeDescription));
+            sb.append(String.format("%d. %s", i+1, recipeDescription));
+            if (i < recipes.size() - 1){
+                sb.append("\n");
+            }
         }
         return sb.toString();
     }

@@ -13,6 +13,7 @@ public class CommandProcessor {
 
     private Map<String, Command> commands;
     private GameModel gameModel;
+    private String lastCommand = null;
 
     public CommandProcessor() {
         this.commands = new HashMap<>();
@@ -41,10 +42,19 @@ public class CommandProcessor {
         String[] splitted = nextLine.split(" ");
 
         String commandKeyword = splitted[0];
+
+        //if commandKeyword is repeat then we reproduce the previous command
+        if (commandKeyword.equals("repeat")){
+            splitted = lastCommand.split(" ");
+            commandKeyword = splitted[0];
+        }
+
         Command command = commands.get(commandKeyword);
 
         if (command != null){
             command.execute(splitted, gameModel);
+            //remember last command so that player can repeat it later
+            lastCommand = nextLine;
         }
     }
 }

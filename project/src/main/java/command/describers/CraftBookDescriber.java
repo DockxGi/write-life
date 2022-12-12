@@ -19,7 +19,7 @@ public class CraftBookDescriber implements Describer<CraftBook> {
         RecipeDescriber recipeDescriber = new RecipeDescriber();
         String recipesDescription = recipeDescriber.describeList(recipes, levelOfDetail);
 
-        return String.format("Recipe-book for theme %s\n%s\n", themeName, recipesDescription);
+        return String.format("Recipe-book for theme %s\n%s", themeName, recipesDescription);
     }
 
     @Override

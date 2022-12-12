@@ -4,6 +4,7 @@ GENERAL HELP
 q -> quit the game
 help -> to show this help text
 help <topic> -> to show info about a topic
+repeat -> execute the last command again
 
 QUICK REFERENCES
 ----------------
