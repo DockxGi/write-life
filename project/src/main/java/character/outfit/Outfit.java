@@ -1,6 +1,5 @@
 package character.outfit;
 
-import org.apache.commons.collections.CollectionUtils;
 import world.domain.item.Item;
 import world.domain.item.ItemType;
 
@@ -88,7 +87,7 @@ public class Outfit {
     }
 
     public Item getItemAtLocation(OutfitLocation location){
-        if (CollectionUtils.isEmpty(wornItems)){
+        if (isEmpty(wornItems)){
             return null;
         }
         return wornItems.stream()
@@ -99,5 +98,22 @@ public class Outfit {
                 })
                 .findFirst()
                 .orElse(null);
+    }
+
+    /**
+     * Returns an estimation (percentage) about how much the outfit covers the body.
+     */
+    public int coverage() {
+        if (isEmpty(wornItems)){
+            return 0;
+        }
+        int coverage = 0;
+        Map<OutfitLocation, Item> itemsByLocation = itemsByLocation();
+        for (OutfitLocation location : itemsByLocation.keySet()) {
+            if (itemsByLocation.get(location) != null){
+                coverage += location.getCoverageImpact();
+            }
+        }
+        return coverage;
     }
 }

@@ -10,12 +10,13 @@ The type of item will determine where it will be placed on your body.
 The possible locations are:
 
 1. head
-2. hands
-3. chest-inner
-4. chest-outer
-5. legs-inner
-6. legs-outer
-7. feet
+2. neck
+3. hands
+4. chest-inner
+5. chest-outer
+6. legs-inner
+7. legs-outer
+8. feet
 
 WEARING AN ITEM
 ----------------

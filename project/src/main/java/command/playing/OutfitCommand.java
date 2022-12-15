@@ -3,10 +3,12 @@ package command.playing;
 import character.outfit.Outfit;
 import character.player.domain.Player;
 import command.ArgumentCommand;
+import command.describers.LevelOfDetail;
 import command.describers.OutfitDescriber;
 import game.GameModel;
 
 import static command.describers.LevelOfDetail.LOW;
+import static command.describers.LevelOfDetail.MEDIUM;
 
 public class OutfitCommand extends ArgumentCommand {
     @Override
@@ -19,24 +21,25 @@ public class OutfitCommand extends ArgumentCommand {
         Player player = game.getPlayer();
         if (player == null){
             System.out.println("You have to enter the world with a player to see your outfit.");
+            return;
         }
         if (!hasArgument(splitted)){
-            showOutfitInLowDetail(player);
+            showOutfit(player, LOW);
             return;
         }
         if (splitted[1].equals("detailed")){
-            //todo: show outfit in more detail
+            showOutfit(player, MEDIUM);
         }
     }
 
-    private void showOutfitInLowDetail(Player player) {
+    private void showOutfit(Player player, LevelOfDetail levelOfDetail) {
         Outfit outfit = player.getOutfit();
         if (outfit == null){
             System.out.println("You are not wearing anything.");
             return;
         }
         OutfitDescriber outfitDescriber = new OutfitDescriber();
-        String outfitDescription = outfitDescriber.describe(outfit, LOW);
+        String outfitDescription = outfitDescriber.describe(outfit, levelOfDetail);
         System.out.print(outfitDescription);
     }
 }

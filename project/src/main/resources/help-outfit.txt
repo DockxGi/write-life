@@ -8,3 +8,7 @@ SEEING WHAT YOU WEAR
 ---------------------
 outfit (to see a short quick summary of what you are wearing)
 outfit detailed (to see more details about what you are wearing)
+
+The detailed outfit description shows the quality of the items,
+the average quality of them and the estimated coverage of you body.
+Quality and coverage are both percentages.
