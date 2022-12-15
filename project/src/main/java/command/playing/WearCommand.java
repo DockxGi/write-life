@@ -19,7 +19,7 @@ public class WearCommand extends ArgumentCommand {
     public void execute(String[] splitted, GameModel game) {
         Room currentRoom = game.getCurrentRoom();
         if (currentRoom == null){
-            System.out.println("You need to be in a room to change your outfit");
+            System.out.println("You need to be in a room to change your outfit.");
             return;
         }
         if (!hasArgument(splitted)){

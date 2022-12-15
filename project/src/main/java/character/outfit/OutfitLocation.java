@@ -23,4 +23,13 @@ public enum OutfitLocation {
     OutfitLocation(int coverageImpact) {
         this.coverageImpact = coverageImpact;
     }
+
+    public static OutfitLocation fromName(String position) {
+        for (OutfitLocation value : values()) {
+            if (value.name().equalsIgnoreCase(position)){
+                return value;
+            }
+        }
+        return null;
+    }
 }

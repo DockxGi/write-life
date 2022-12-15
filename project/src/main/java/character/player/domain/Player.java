@@ -2,6 +2,7 @@ package character.player.domain;
 
 import character.Inventory;
 import character.outfit.Outfit;
+import character.outfit.OutfitLocation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,23 +57,6 @@ public class Player {
             inventory.removeItem(item);
         }
         return added;
-    }
-
-    public boolean takeOff(Item item){
-        if (outfit == null){
-            outfit = new Outfit();
-        }
-        //the inventory must have place to put the item
-        if (inventory.isFull()){
-            return false;
-        }
-
-        //the item has to be part of the outfit
-        boolean removed = outfit.remove(item);
-        if (removed){
-            inventory.addItem(item);
-        }
-        return removed;
     }
 
     public boolean canTakeItem(){
@@ -186,5 +170,19 @@ public class Player {
 
     public void removeItem(Item item) {
         inventory.removeItem(item);
+    }
+
+    public boolean takeOffClothesAt(OutfitLocation location) {
+        if (outfit == null){
+            outfit = new Outfit();
+            return false;
+        }
+        //the inventory must have place to put the item
+        if (inventory.isFull()){
+            return false;
+        }
+        Item item = outfit.removeItemAt(location);
+        inventory.addItem(item);
+        return item != null;
     }
 }

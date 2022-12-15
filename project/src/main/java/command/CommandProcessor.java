@@ -35,6 +35,7 @@ public class CommandProcessor {
         supportCommand(new CraftCommand());
         supportCommand(new WearCommand());
         supportCommand(new OutfitCommand());
+        supportCommand(new TakeOffCommand());
     }
 
     private void supportCommand(Command command){

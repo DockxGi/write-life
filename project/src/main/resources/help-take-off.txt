@@ -1,0 +1,13 @@
+=================
+HELP -> TAKE OFF
+=================
+See: HELP WEAR to know how to add items to your outfit
+See: HELP OUTFIT to see how you can have a look at your current outfit
+
+TAKE OF CLOTHES
+----------------
+take-off <itemName>
+take-off item <positionOfItem> (example: take-off item chest_outer)
+
+If you take off clothes then they will be put in your inventory.
+So make sure that you have enough space in your inventory before you take off something.

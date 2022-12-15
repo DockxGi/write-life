@@ -57,21 +57,6 @@ public class Outfit {
         return occupiedLocations;
     }
 
-    public boolean remove(Item item) {
-        if (isEmpty(wornItems)){
-            return false;
-        }
-        Iterator<Item> iterator = wornItems.iterator();
-        while (iterator.hasNext()){
-            Item wornItem = iterator.next();
-            if (wornItem.equals(item)){
-                iterator.remove();
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Returns a map with as key the location of the item and as value what item is placed there.
      * If nothing is place there then the value is null for that key.
@@ -115,5 +100,14 @@ public class Outfit {
             }
         }
         return coverage;
+    }
+
+    public Item removeItemAt(OutfitLocation location) {
+        Item itemAtLocation = getItemAtLocation(location);
+        if (itemAtLocation == null){
+            return null;
+        }
+        wornItems.remove(itemAtLocation);
+        return itemAtLocation;
     }
 }
