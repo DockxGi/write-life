@@ -1,0 +1,27 @@
+=============
+HELP -> WEAR
+=============
+You can wear some items on your body. When you do this then
+the items will be removed from your inventory and will become part of your outfit.
+
+OUTFIT LOCATIONS
+-----------------
+The type of item will determine where it will be placed on your body.
+The possible locations are:
+
+1. head
+2. hands
+3. chest-inner
+4. chest-outer
+5. legs-inner
+6. legs-outer
+7. feet
+
+WEARING AN ITEM
+----------------
+wear <itemName>
+wear item <positionInListOfItems>
+
+Not all items have a name. When you use the inventory-command then
+you will see a list of items. Before each item is a number.
+This is the positionInListOfItems.

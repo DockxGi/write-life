@@ -24,6 +24,8 @@ BEGINNER TOPICS
 10. drop
 11. craft
 12. wear
+13. outfit
+14. take-off
 
 INTERMEDIATE TOPICS
 --------------------

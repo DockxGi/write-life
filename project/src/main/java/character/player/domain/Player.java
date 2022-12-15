@@ -1,6 +1,7 @@
 package character.player.domain;
 
 import character.Inventory;
+import character.outfit.Outfit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +28,12 @@ public class Player {
 
     private String name;
     private Inventory inventory;
+    private Outfit outfit;
 
     public Player(String name) {
         this.name = name;
         inventory = new Inventory();
+        outfit = new Outfit();
     }
 
     /**
@@ -42,6 +45,34 @@ public class Player {
             this.inventory = new Inventory();
         }
         return inventory.addItem(item);
+    }
+
+    public boolean wearItem(Item item){
+        if (outfit == null){
+            outfit = new Outfit();
+        }
+        boolean added = outfit.add(item);
+        if (added){
+            inventory.removeItem(item);
+        }
+        return added;
+    }
+
+    public boolean takeOff(Item item){
+        if (outfit == null){
+            outfit = new Outfit();
+        }
+        //the inventory must have place to put the item
+        if (inventory.isFull()){
+            return false;
+        }
+
+        //the item has to be part of the outfit
+        boolean removed = outfit.remove(item);
+        if (removed){
+            inventory.addItem(item);
+        }
+        return removed;
     }
 
     public boolean canTakeItem(){

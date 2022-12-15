@@ -33,6 +33,7 @@ public class CommandProcessor {
         supportCommand(new DropCommand());
         supportCommand(new CraftBookCommand());
         supportCommand(new CraftCommand());
+        supportCommand(new WearCommand());
     }
 
     private void supportCommand(Command command){
