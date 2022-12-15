@@ -1,10 +1,10 @@
 package character.outfit;
 
+import org.apache.commons.collections.CollectionUtils;
 import world.domain.item.Item;
+import world.domain.item.ItemType;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static character.outfit.ItemTypeOutfitLocationMapper.outfitLocationForItemType;
 import static java.util.Collections.emptyList;
@@ -71,5 +71,33 @@ public class Outfit {
             }
         }
         return false;
+    }
+
+    /**
+     * Returns a map with as key the location of the item and as value what item is placed there.
+     * If nothing is place there then the value is null for that key.
+     * Every location is present in the map.
+     */
+    public Map<OutfitLocation, Item> itemsByLocation() {
+        Map<OutfitLocation, Item> map = new HashMap<>();
+        OutfitLocation[] locations = OutfitLocation.values();
+        for (OutfitLocation location : locations) {
+            map.put(location, getItemAtLocation(location));
+        }
+        return map;
+    }
+
+    public Item getItemAtLocation(OutfitLocation location){
+        if (CollectionUtils.isEmpty(wornItems)){
+            return null;
+        }
+        return wornItems.stream()
+                .filter(item -> {
+                    ItemType itemType = item.getType();
+                    List<OutfitLocation> locationsOfItem = outfitLocationForItemType(itemType);
+                    return locationsOfItem.contains(location);
+                })
+                .findFirst()
+                .orElse(null);
     }
 }

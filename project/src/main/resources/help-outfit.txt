@@ -1,0 +1,10 @@
+===============
+HELP -> OUTFIT
+===============
+See: HELP WEAR to know how to add items to your outfit
+See: HELP TAKE-OFF to know how to remove an item from your outfit
+
+SEEING WHAT YOU WEAR
+---------------------
+outfit (to see a short quick summary of what you are wearing)
+outfit detailed (to see more details about what you are wearing)

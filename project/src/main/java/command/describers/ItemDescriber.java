@@ -5,6 +5,8 @@ import world.domain.item.Item;
 import java.util.List;
 import java.util.Locale;
 
+import static command.describers.LevelOfDetail.LOW;
+
 public class ItemDescriber implements Describer<Item> {
 
     @Override
@@ -12,6 +14,10 @@ public class ItemDescriber implements Describer<Item> {
         String name = object.getName() == null ? "anonymous" : object.getName();
         String type = object.getType().name().toLowerCase(Locale.ROOT);
         Integer quality = object.getQuality();
+
+        if (LOW.equals(levelOfDetail)){
+            return String.format("Item: [name: %s, type: %s]", name, type);
+        }
 
         return String.format("Item: [name: %s, type: %s, quality: %s]", name, type, quality);
     }
